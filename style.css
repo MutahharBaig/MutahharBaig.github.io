@@ -822,6 +822,7 @@ body {
     justify-content: center;
     position: relative;
     border-bottom: 1px solid var(--border);
+    overflow: hidden;
 }
 
 .project-banner i {
@@ -830,6 +831,26 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.project-banner.has-image {
+    height: 220px;
+    background: var(--bg);
+}
+
+.project-banner.has-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-banner.has-image img {
+    transform: scale(1.05);
+}
+
+.project-card.featured .project-banner.has-image {
+    height: 280px;
 }
 
 .project-badge {
