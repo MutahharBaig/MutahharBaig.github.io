@@ -157,7 +157,7 @@ if (contactForm) {
         const subject = data.get('subject');
         const message = data.get('message');
 
-        const body = `Hi Mutahhar,%0D%0A%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0A— ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
+        const body = `Hi Mutahhar,%0D%0A%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0A ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
         const mailto = `mailto:mutahharbaig215@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
 
         window.location.href = mailto;
