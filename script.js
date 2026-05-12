@@ -144,29 +144,75 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealEls.forEach(el => revealObserver.observe(el));
 
-// ---------- Contact form (mailto fallback) ----------
+// ---------- Contact form (mailto with validation + loading state) ----------
 const contactForm = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');
+const submitBtn = document.getElementById('contactSubmit');
+
+function setFormStatus(msg, kind) {
+    if (!formNote) return;
+    formNote.textContent = msg;
+    formNote.className = 'form-note' + (kind ? ' ' + kind : '');
+}
+
+function markInvalid(input, invalid) {
+    if (!input) return;
+    input.classList.toggle('invalid', invalid);
+}
+
+function validateField(input) {
+    const ok = input.checkValidity();
+    markInvalid(input, !ok);
+    return ok;
+}
 
 if (contactForm) {
+    // live validation: clear error styling as the user fixes the field
+    contactForm.querySelectorAll('input, textarea').forEach(el => {
+        el.addEventListener('input', () => {
+            if (el.classList.contains('invalid')) validateField(el);
+        });
+        el.addEventListener('blur', () => validateField(el));
+    });
+
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
+
+        const fields = [...contactForm.querySelectorAll('input, textarea')];
+        const allValid = fields.map(validateField).every(Boolean);
+        if (!allValid) {
+            setFormStatus('Please fix the highlighted fields.', 'error');
+            const firstBad = fields.find(f => f.classList.contains('invalid'));
+            if (firstBad) firstBad.focus();
+            return;
+        }
+
         const data = new FormData(contactForm);
         const name = data.get('name');
         const email = data.get('email');
         const subject = data.get('subject');
         const message = data.get('message');
 
+        // loading state
+        const originalLabel = submitBtn ? submitBtn.querySelector('.btn-label').textContent : '';
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.querySelector('.btn-label').textContent = 'Opening email client...';
+        }
+
         const body = `Hi Mutahhar,%0D%0A%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0A ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
         const mailto = `mailto:mutahharbaig215@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
 
         window.location.href = mailto;
-        formNote.textContent = 'Opening your email client...';
-        formNote.className = 'form-note success';
+        setFormStatus('Opening your email client...', 'success');
 
         setTimeout(() => {
             contactForm.reset();
-            formNote.textContent = '';
+            setFormStatus('', '');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.querySelector('.btn-label').textContent = originalLabel;
+            }
         }, 4000);
     });
 }

@@ -37,6 +37,40 @@
     box-sizing: border-box;
 }
 
+/* Screen-reader-only utility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Skip-to-content link (keyboard / screen-reader users) */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    z-index: 2000;
+    background: var(--gradient);
+    color: white;
+    padding: 0.7rem 1.2rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 1rem;
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -334,6 +368,27 @@ body {
     border-color: var(--accent);
     color: var(--accent);
     transform: translateY(-2px);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text-dim);
+    border: 1.5px solid transparent;
+}
+
+.btn-ghost:hover {
+    color: var(--accent);
+    border-color: var(--border);
+    background: var(--bg-card);
+    transform: translateY(-2px);
+}
+
+.btn:disabled,
+.btn[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
 }
 
 .hero-socials {
@@ -903,6 +958,41 @@ body {
     border: 1px solid var(--border);
 }
 
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border);
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 0.45rem 0.9rem;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+.project-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(6, 182, 212, 0.08);
+    transform: translateY(-2px);
+}
+
+.project-link i {
+    font-size: 0.9rem;
+}
+
 .projects-footer {
     text-align: center;
     margin-top: 3rem;
@@ -1175,6 +1265,14 @@ body {
     margin-bottom: 1rem;
 }
 
+.contact-form .field {
+    margin-bottom: 1rem;
+}
+
+.form-row .field {
+    margin-bottom: 0;
+}
+
 .contact-form input,
 .contact-form textarea {
     width: 100%;
@@ -1185,7 +1283,6 @@ body {
     color: var(--text);
     font-family: var(--font);
     font-size: 0.95rem;
-    margin-bottom: 1rem;
     transition: var(--transition);
     resize: vertical;
 }
@@ -1196,6 +1293,12 @@ body {
     border-color: var(--accent);
     background: var(--bg);
     box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+}
+
+.contact-form input.invalid,
+.contact-form textarea.invalid {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
 }
 
 .contact-form input::placeholder,
