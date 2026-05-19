@@ -144,29 +144,75 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealEls.forEach(el => revealObserver.observe(el));
 
-// ---------- Contact form (mailto fallback) ----------
+// ---------- Contact form (mailto with validation + loading state) ----------
 const contactForm = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');
+const submitBtn = document.getElementById('contactSubmit');
+
+function setFormStatus(msg, kind) {
+    if (!formNote) return;
+    formNote.textContent = msg;
+    formNote.className = 'form-note' + (kind ? ' ' + kind : '');
+}
+
+function markInvalid(input, invalid) {
+    if (!input) return;
+    input.classList.toggle('invalid', invalid);
+}
+
+function validateField(input) {
+    const ok = input.checkValidity();
+    markInvalid(input, !ok);
+    return ok;
+}
 
 if (contactForm) {
+    // live validation: clear error styling as the user fixes the field
+    contactForm.querySelectorAll('input, textarea').forEach(el => {
+        el.addEventListener('input', () => {
+            if (el.classList.contains('invalid')) validateField(el);
+        });
+        el.addEventListener('blur', () => validateField(el));
+    });
+
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
+
+        const fields = [...contactForm.querySelectorAll('input, textarea')];
+        const allValid = fields.map(validateField).every(Boolean);
+        if (!allValid) {
+            setFormStatus('Please fix the highlighted fields.', 'error');
+            const firstBad = fields.find(f => f.classList.contains('invalid'));
+            if (firstBad) firstBad.focus();
+            return;
+        }
+
         const data = new FormData(contactForm);
         const name = data.get('name');
         const email = data.get('email');
         const subject = data.get('subject');
         const message = data.get('message');
 
+        // loading state
+        const originalLabel = submitBtn ? submitBtn.querySelector('.btn-label').textContent : '';
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.querySelector('.btn-label').textContent = 'Opening email client...';
+        }
+
         const body = `Hi Mutahhar,%0D%0A%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0A ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
         const mailto = `mailto:mutahharbaig215@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
 
         window.location.href = mailto;
-        formNote.textContent = 'Opening your email client...';
-        formNote.className = 'form-note success';
+        setFormStatus('Opening your email client...', 'success');
 
         setTimeout(() => {
             contactForm.reset();
-            formNote.textContent = '';
+            setFormStatus('', '');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.querySelector('.btn-label').textContent = originalLabel;
+            }
         }, 4000);
     });
 }
@@ -174,3 +220,78 @@ if (contactForm) {
 // ---------- Footer year ----------
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// ---------- Premium custom cursor ----------
+(function initCursor() {
+    const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!isFinePointer) return;
+
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    if (!dot || !ring) return;
+
+    let mx = window.innerWidth / 2;
+    let my = window.innerHeight / 2;
+    let rx = mx;
+    let ry = my;
+    let rafId = null;
+
+    function render() {
+        // dot moves with the pointer instantly
+        dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
+
+        // ring eases toward the pointer (premium lag)
+        rx += (mx - rx) * 0.18;
+        ry += (my - ry) * 0.18;
+        ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
+
+        rafId = requestAnimationFrame(render);
+    }
+    render();
+
+    window.addEventListener('mousemove', (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        dot.classList.remove('hidden');
+        ring.classList.remove('hidden');
+    }, { passive: true });
+
+    // Click pulse
+    window.addEventListener('mousedown', () => ring.classList.add('click'));
+    window.addEventListener('mouseup', () => ring.classList.remove('click'));
+
+    // Leave / enter window
+    document.addEventListener('mouseleave', () => {
+        dot.classList.add('hidden');
+        ring.classList.add('hidden');
+    });
+    document.addEventListener('mouseenter', () => {
+        dot.classList.remove('hidden');
+        ring.classList.remove('hidden');
+    });
+
+    // Hover targets: interactive elements expand the ring
+    const hoverSelector = 'a, button, [role="button"], .project-card, .stat-card, .skill-category, .contact-card, .timeline-content, .edu-card, .skill-tags span, .timeline-tags span, .project-tags span, .float-badge';
+    document.querySelectorAll(hoverSelector).forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            ring.classList.add('hover');
+            dot.classList.add('hover');
+        });
+        el.addEventListener('mouseleave', () => {
+            ring.classList.remove('hover');
+            dot.classList.remove('hover');
+        });
+    });
+
+    // Text inputs: switch to I-beam style
+    document.querySelectorAll('input, textarea, [contenteditable="true"]').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            ring.classList.add('text');
+            dot.classList.add('text');
+        });
+        el.addEventListener('mouseleave', () => {
+            ring.classList.remove('text');
+            dot.classList.remove('text');
+        });
+    });
+})();

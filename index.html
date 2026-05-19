@@ -4,7 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Muhammad Mutahhar Baig Electronics Engineer specializing in AI, ML, Deep Learning, and Embedded Systems.">
+    <meta name="author" content="Muhammad Mutahhar Baig">
+    <meta name="keywords" content="Muhammad Mutahhar Baig, Electronics Engineer, AI Engineer, ML Engineer, Embedded Systems, Edge AI, ESP32, UET Taxila, Pakistan">
     <title>Muhammad Mutahhar Baig Electronics Engineer</title>
+
+    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Muhammad Mutahhar Baig Electronics Engineer">
+    <meta property="og:description" content="Electronics Engineer specializing in AI, ML, Deep Learning, and Embedded Systems. Building intelligent edge-deployed solutions.">
+    <meta property="og:image" content="assets/profile.jpg">
+    <meta property="og:url" content="https://mutahharbaig.github.io">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Muhammad Mutahhar Baig Electronics Engineer">
+    <meta name="twitter:description" content="Electronics Engineer specializing in AI, ML, Deep Learning, and Embedded Systems.">
+    <meta name="twitter:image" content="assets/profile.jpg">
+
+    <!-- Favicon (inline SVG of the <MMB/> logo) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2307080a'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='JetBrains Mono, Courier New, monospace' font-size='22' font-weight='700' fill='%23d4af37'%3E%26lt;%2F%26gt;%3C/text%3E%3C/svg%3E">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -12,6 +31,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
 
     <div class="bg-grid"></div>
     <div class="bg-glow glow-1"></div>
@@ -36,6 +59,8 @@
             </button>
         </div>
     </nav>
+
+    <main id="main">
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -62,7 +87,10 @@
                     <a href="#projects" class="btn btn-primary">
                         <i class="fas fa-rocket"></i> View My Work
                     </a>
-                    <a href="#contact" class="btn btn-secondary">
+                    <a href="assets/resume.pdf" class="btn btn-secondary" download>
+                        <i class="fas fa-file-arrow-down"></i> Download CV
+                    </a>
+                    <a href="#contact" class="btn btn-ghost">
                         <i class="fas fa-paper-plane"></i> Get In Touch
                     </a>
                 </div>
@@ -305,6 +333,12 @@
                         <div class="project-tags">
                             <span>OpenCV</span><span>TensorFlow</span><span>BTS7960</span><span>GPS</span><span>Sensor Fusion</span>
                         </div>
+                        <div class="project-links">
+                            <!-- TODO: replace # with the Agri-Rover GitHub repo URL -->
+                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                            <!-- TODO: replace # with the demo video / live URL -->
+                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fas fa-play"></i> Demo</a>
+                        </div>
                     </div>
                 </article>
 
@@ -322,6 +356,12 @@
                         <div class="project-tags">
                             <span>Whisper</span><span>FastAPI</span><span>HF Spaces</span><span>Python</span>
                         </div>
+                        <div class="project-links">
+                            <!-- TODO: replace # with the STT pipeline GitHub repo URL -->
+                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                            <!-- TODO: replace # with the Hugging Face Space URL -->
+                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> HF Space</a>
+                        </div>
                     </div>
                 </article>
 
@@ -338,6 +378,10 @@
                         </p>
                         <div class="project-tags">
                             <span>ESP32-S3</span><span>I2S</span><span>BLE</span><span>Wi-Fi Direct</span>
+                        </div>
+                        <div class="project-links">
+                            <!-- TODO: replace # with the ESP32-S3 audio repo URL -->
+                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
                 </article>
@@ -357,6 +401,10 @@
                         <div class="project-tags">
                             <span>FreeRTOS</span><span>ESP-IDF</span><span>I2S</span><span>SD Card</span>
                         </div>
+                        <div class="project-links">
+                            <!-- TODO: replace # with the Children's audio device repo URL -->
+                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                        </div>
                     </div>
                 </article>
 
@@ -374,6 +422,10 @@
                         <div class="project-tags">
                             <span>Computer Vision</span><span>Model Optimization</span><span>Edge AI</span>
                         </div>
+                        <div class="project-links">
+                            <!-- TODO: replace # with the weed-detection repo URL -->
+                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                        </div>
                     </div>
                 </article>
 
@@ -390,6 +442,10 @@
                         </p>
                         <div class="project-tags">
                             <span>MediaPipe</span><span>OpenCV</span><span>Python</span>
+                        </div>
+                        <div class="project-links">
+                            <!-- TODO: replace # with the gesture/sign-language repo URL -->
+                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
                 </article>
@@ -585,21 +641,35 @@
                 </a>
             </div>
 
-            <form class="contact-form" id="contactForm">
+            <form class="contact-form" id="contactForm" novalidate>
                 <h3>Send a quick message</h3>
                 <div class="form-row">
-                    <input type="text" name="name" placeholder="Your name" required>
-                    <input type="email" name="email" placeholder="Your email" required>
+                    <div class="field">
+                        <label for="cf-name" class="sr-only">Your name</label>
+                        <input id="cf-name" type="text" name="name" placeholder="Your name" required minlength="2" autocomplete="name">
+                    </div>
+                    <div class="field">
+                        <label for="cf-email" class="sr-only">Your email</label>
+                        <input id="cf-email" type="email" name="email" placeholder="Your email" required autocomplete="email">
+                    </div>
                 </div>
-                <input type="text" name="subject" placeholder="Subject" required>
-                <textarea name="message" placeholder="Your message..." rows="5" required></textarea>
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-paper-plane"></i> Send Message
+                <div class="field">
+                    <label for="cf-subject" class="sr-only">Subject</label>
+                    <input id="cf-subject" type="text" name="subject" placeholder="Subject" required minlength="2">
+                </div>
+                <div class="field">
+                    <label for="cf-message" class="sr-only">Your message</label>
+                    <textarea id="cf-message" name="message" placeholder="Your message..." rows="5" required minlength="10"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="contactSubmit">
+                    <i class="fas fa-paper-plane"></i> <span class="btn-label">Send Message</span>
                 </button>
-                <p class="form-note" id="formNote"></p>
+                <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
             </form>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
