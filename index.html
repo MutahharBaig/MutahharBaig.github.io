@@ -315,15 +315,25 @@ h1 .copper{color:var(--copper)}
 .filter-btn.active{background:var(--copper);border-color:var(--copper);color:var(--btn-text);font-weight:500}
 .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .proj{
+  --mx:50%;--my:50%;
   background:var(--board-2);border:1px solid var(--copper-dim);border-radius:12px;
   padding:1.5rem 1.4rem;display:flex;flex-direction:column;gap:.7rem;position:relative;
   transition:opacity .7s ease,transform .25s ease,border-color .25s,box-shadow .25s;
+  overflow:hidden;
 }
 .proj::before{
-  content:attr(data-ref);position:absolute;top:12px;right:14px;
+  content:attr(data-ref);position:absolute;top:12px;right:14px;z-index:2;
   font-family:var(--mono);font-size:.68rem;color:color-mix(in srgb, var(--muted) 50%, transparent);letter-spacing:.1em;
 }
+.proj > *{position:relative;z-index:2}
+.proj::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:1;
+  background:radial-gradient(220px circle at var(--mx) var(--my),
+    color-mix(in srgb, var(--copper) 28%, transparent), transparent 65%);
+  opacity:0;transition:opacity .3s ease;
+}
 .proj:hover{transform:translateY(-5px);border-color:var(--copper);box-shadow:var(--shadow-pop)}
+.proj:hover::after{opacity:1}
 .proj.featured{border-color:color-mix(in srgb, var(--copper) 55%, transparent);background:linear-gradient(165deg,var(--board-3),var(--board-2))}
 .proj .feat-pill{
   position:absolute;top:0;left:1.4rem;transform:translateY(-50%);
@@ -347,6 +357,15 @@ h1 .copper{color:var(--copper)}
 }
 .proj .links a:hover{color:var(--copper-bright)}
 .proj.hide{display:none}
+
+/* projects section CTA */
+.demo-cta{text-align:center;margin-top:2.6rem}
+.demo-cta p{
+  font-family:var(--mono);font-size:.74rem;color:var(--muted);
+  margin-top:.95rem;letter-spacing:.04em;
+}
+.btn-large{padding:1.05rem 1.9rem;font-size:.93rem;gap:.7rem}
+.btn-large:hover{box-shadow:0 10px 32px color-mix(in srgb, var(--copper) 40%, transparent)}
 
 /* ---------- skills ---------- */
 .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
@@ -695,7 +714,7 @@ h2.section-title.in::after{width:140px}
     <h2 class="section-title reveal" id="proj-title">Things I've <em>built & shipped</em></h2>
 
     <div class="filters reveal" role="group" aria-label="Filter projects">
-      <button class="filter-btn active" data-filter="all">all (12)</button>
+      <button class="filter-btn active" data-filter="all">all (14)</button>
       <button class="filter-btn" data-filter="ai">edge ai & vision</button>
       <button class="filter-btn" data-filter="embedded">embedded & firmware</button>
       <button class="filter-btn" data-filter="audio">audio systems</button>
@@ -723,7 +742,7 @@ h2.section-title.in::after{width:140px}
         <span class="feat-pill">FEATURED</span>
         <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="1"/><path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"/></svg></div>
         <h3>NatureScope</h3>
-        <p>All-in-one educational AI device that lets kids point a camera at insects, animals, or birds and hear what they are. Combines vision-language image description, birdsong-to-species audio classification, and OCR that extracts text and reads or translates it aloud. Driven by a custom touchscreen GUI with speech-to-text questions and text-to-speech answers, packaged as a pocket nature-tutor.</p>
+        <p>Pocket AI nature-tutor for kids. Camera input runs through a vision-language model that identifies and describes any insect, animal, or bird out loud. Pairs that with birdsong-based species ID, OCR that reads and translates text aloud, and a voice-question / voice-answer loop on a custom touchscreen GUI.</p>
         <div class="t-tags"><span class="tag">Vision-LLM</span><span class="tag">STT / TTS</span><span class="tag">OCR</span><span class="tag">Audio Classification</span><span class="tag">Edge AI</span></div>
       </article>
 
@@ -768,7 +787,6 @@ h2.section-title.in::after{width:140px}
         <h3>Jack Jack — BLE Baby Monitor</h3>
         <p>BLE sensor node that detects and classifies infant crying, streaming alerts to a paired device — low-power audio sensing meets on-device classification.</p>
         <div class="t-tags"><span class="tag">BLE</span><span class="tag">Audio ML</span><span class="tag">Low Power</span></div>
-        <div class="links"><a href="https://drive.google.com/drive/folders/1ofI8dX1dyh4jUrcsQqUzQ0Ba3h2IgeLf" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>See project demo</a></div>
       </article>
 
       <article class="proj reveal" data-cat="embedded" data-ref="P-08">
@@ -783,7 +801,6 @@ h2.section-title.in::after{width:140px}
         <h3>Stress-Sensing Wristband</h3>
         <p>Wearable on ESP32 with a MAX30102 sensor, deriving heart-rate-variability features from PPG to estimate stress levels — biomedical signal processing on a wrist-sized power budget.</p>
         <div class="t-tags"><span class="tag">MAX30102</span><span class="tag">HRV</span><span class="tag">Biosignals</span></div>
-        <div class="links"><a href="https://drive.google.com/drive/folders/1ofI8dX1dyh4jUrcsQqUzQ0Ba3h2IgeLf" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>See project demo</a></div>
       </article>
 
       <article class="proj reveal" data-cat="embedded" data-ref="P-10">
@@ -798,7 +815,7 @@ h2.section-title.in::after{width:140px}
         <h3>Al-Noor Islamic Audio Device</h3>
         <p>Educational audio player for kids with Islamic content — embedded C firmware, tactile navigation, and curated audio libraries, built as part of the open Noor educational toy project.</p>
         <div class="t-tags"><span class="tag">Embedded C</span><span class="tag">Audio</span><span class="tag">EdTech</span></div>
-        <div class="links"><a href="https://github.com/HackHobby-Lab/Noor" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>GitHub repo</a><a href="https://drive.google.com/drive/folders/1ofI8dX1dyh4jUrcsQqUzQ0Ba3h2IgeLf" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>See project demo</a></div>
+        <div class="links"><a href="https://github.com/HackHobby-Lab/Noor" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>GitHub repo</a></div>
       </article>
 
       <article class="proj reveal" data-cat="ai" data-ref="P-13">
@@ -809,6 +826,15 @@ h2.section-title.in::after{width:140px}
         <div class="links"><a href="https://github.com/MutahharBaig/An-Automated-System-for-Arrhythmia-Detection-Using-Machine-Learning-Techniques-in-MATLAB-" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>GitHub repo</a></div>
       </article>
 
+    </div>
+
+    <div class="demo-cta reveal">
+      <a class="btn btn-solid btn-large" href="https://drive.google.com/drive/folders/1ofI8dX1dyh4jUrcsQqUzQ0Ba3h2IgeLf" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        Watch all project demos
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+      <p>All demo videos are on Google Drive — one folder, every project.</p>
     </div>
   </div>
 </section>
@@ -1014,6 +1040,17 @@ if(tl){
   tlObs.observe(tl);
 }
 document.querySelectorAll(".reveal").forEach(el => revObs.observe(el));
+
+/* ---------- spotlight follow on project cards ---------- */
+if(!reduceMotion){
+  document.querySelectorAll(".proj").forEach(card => {
+    card.addEventListener("mousemove", e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      card.style.setProperty("--my", (e.clientY - r.top) + "px");
+    }, {passive:true});
+  });
+}
 
 /* ---------- typed roles ---------- */
 const roles = [
