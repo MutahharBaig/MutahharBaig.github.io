@@ -1,700 +1,1243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Muhammad Mutahhar Baig Electronics Engineer specializing in AI, ML, Deep Learning, and Embedded Systems.">
-    <meta name="author" content="Muhammad Mutahhar Baig">
-    <meta name="keywords" content="Muhammad Mutahhar Baig, Electronics Engineer, AI Engineer, ML Engineer, Embedded Systems, Edge AI, ESP32, UET Taxila, Pakistan">
-    <title>Muhammad Mutahhar Baig Electronics Engineer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Mutahhar Baig — Electronics Engineer · Embedded & Edge AI</title>
 
-    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Muhammad Mutahhar Baig Electronics Engineer">
-    <meta property="og:description" content="Electronics Engineer specializing in AI, ML, Deep Learning, and Embedded Systems. Building intelligent edge-deployed solutions.">
-    <meta property="og:image" content="assets/profile.jpg">
-    <meta property="og:url" content="https://mutahharbaig.github.io">
+<!-- SEO -->
+<meta name="description" content="Muhammad Mutahhar Baig — Electronics Engineer from UET Taxila specializing in embedded systems, firmware, edge AI, and signal processing. ESP32, STM32, Rockchip, TensorFlow Lite, ONNX, RKNN.">
+<meta name="author" content="Muhammad Mutahhar Baig">
+<meta name="keywords" content="Electronics Engineer, Embedded Systems, Edge AI, Firmware Developer, ESP32, STM32, TensorFlow Lite, RKNN, Signal Processing, Islamabad, Pakistan">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Muhammad Mutahhar Baig Electronics Engineer">
-    <meta name="twitter:description" content="Electronics Engineer specializing in AI, ML, Deep Learning, and Embedded Systems.">
-    <meta name="twitter:image" content="assets/profile.jpg">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Muhammad Mutahhar Baig — Electronics Engineer">
+<meta property="og:description" content="Embedded systems & edge AI engineer. Firmware, model optimization, and real-time audio/vision pipelines on constrained hardware.">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/179309703?v=4">
+<meta property="og:url" content="https://mutahharbaig.github.io/">
 
-    <!-- Favicon (inline SVG of the <MMB/> logo) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2307080a'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='JetBrains Mono, Courier New, monospace' font-size='22' font-weight='700' fill='%23d4af37'%3E%26lt;%2F%26gt;%3C/text%3E%3C/svg%3E">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Muhammad Mutahhar Baig — Electronics Engineer">
+<meta name="twitter:description" content="Embedded systems & edge AI engineer. Firmware, model optimization, and real-time audio/vision pipelines on constrained hardware.">
+<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/179309703?v=4">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --board:#0B1220;
+  --board-2:#101A2E;
+  --board-3:#15223A;
+  --copper:#E0915A;
+  --copper-bright:#F2B27D;
+  --signal:#5BC8AF;
+  --silk:#E8EDF5;
+  --muted:#8A97AC;
+  --danger:#E06A6A;
+  --btn-text:var(--btn-text);
+  --copper-dim:color-mix(in srgb, var(--copper) 18%, transparent);
+  --overlay:rgba(5,9,18,.88);
+  --shadow-card:var(--shadow-card);
+  --shadow-pop:var(--shadow-pop);
+  --shadow-modal:var(--shadow-modal);
+  --radius:10px;
+  --display:'Chakra Petch',sans-serif;
+  --body:'IBM Plex Sans',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --maxw:1100px;
+}
+/* --- solder-mask themes --- */
+[data-theme="emerald"]{
+  --board:#081711; --board-2:#0D211A; --board-3:#122B21;
+  --copper:#D9B95C; --copper-bright:#EDD489; --signal:#62C9E8;
+  --silk:#EAF2ED; --muted:#8FA39A; --btn-text:#15120A;
+}
+[data-theme="violet"]{
+  --board:#0D0A1F; --board-2:#141031; --board-3:#1B153F;
+  --copper:#9F7CFF; --copper-bright:#C3A8FF; --signal:#58E0C0;
+  --silk:#ECEAF7; --muted:#9690B5; --btn-text:#120B26;
+}
+[data-theme="silk"]{
+  --board:#F2EEE6; --board-2:#FFFFFF; --board-3:#F8F4EC;
+  --copper:#B05A28; --copper-bright:#8F4318; --signal:#0E8F77;
+  --silk:#1F2535; --muted:#5C667B; --danger:#C03A3A; --btn-text:#FFF7EF;
+  --overlay:rgba(31,37,53,.55);
+  --shadow-card:0 24px 60px rgba(31,37,53,.14);
+  --shadow-pop:0 18px 40px rgba(31,37,53,.16);
+  --shadow-modal:0 30px 90px rgba(31,37,53,.3);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--board);
+  color:var(--silk);
+  font-family:var(--body);
+  font-size:16.5px;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+::selection{background:var(--copper);color:var(--board)}
+
+/* subtle board grid */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--silk) 2.5%, transparent) 1px,transparent 1px),
+    linear-gradient(90deg,color-mix(in srgb, var(--silk) 2.5%, transparent) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+
+.skip-link{
+  position:absolute;left:-9999px;top:0;z-index:200;
+  background:var(--copper);color:var(--board);
+  padding:.6rem 1rem;font-family:var(--mono);font-size:.85rem;border-radius:0 0 8px 0;
+}
+.skip-link:focus{left:0}
+
+a{color:var(--copper-bright)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--copper);outline-offset:3px;
+}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+/* ---------- scroll progress trace ---------- */
+#trace-progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;z-index:120;
+  background:linear-gradient(90deg,var(--copper),var(--copper-bright));
+  box-shadow:0 0 12px color-mix(in srgb, var(--copper) 70%, transparent);
+}
+
+/* ---------- nav ---------- */
+header.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:color-mix(in srgb, var(--board) 82%, transparent);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--copper-dim);
+}
+.nav-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;height:64px;
+}
+.logo{
+  font-family:var(--mono);font-size:.95rem;color:var(--silk);
+  text-decoration:none;letter-spacing:.02em;display:flex;align-items:center;gap:.55rem;
+}
+.logo .pad{
+  width:12px;height:12px;border-radius:50%;
+  background:radial-gradient(circle at center,var(--board) 28%,var(--copper) 30%);
+  box-shadow:0 0 8px color-mix(in srgb, var(--copper) 60%, transparent);
+}
+.logo b{color:var(--copper)}
+nav.menu{display:flex;gap:1.6rem;align-items:center}
+nav.menu a{
+  font-family:var(--mono);font-size:.82rem;color:var(--muted);
+  text-decoration:none;letter-spacing:.04em;transition:color .2s;
+  padding:.3rem 0;border-bottom:2px solid transparent;
+}
+nav.menu a:hover{color:var(--silk)}
+nav.menu a.active{color:var(--copper-bright);border-bottom-color:var(--copper)}
+.nav-toggle{
+  display:none;background:none;border:1px solid var(--copper-dim);color:var(--silk);
+  font-family:var(--mono);font-size:.8rem;padding:.45rem .8rem;border-radius:6px;cursor:pointer;
+}
+
+/* ---------- section scaffolding ---------- */
+section{padding:110px 0 30px;position:relative}
+.eyebrow{
+  font-family:var(--mono);font-size:.8rem;color:var(--copper);
+  letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:.8rem;
+  margin-bottom:.9rem;
+}
+.eyebrow::before{
+  content:"";width:34px;height:1px;background:var(--copper);
+  box-shadow:8px 0 0 -0px var(--copper);
+}
+.eyebrow::after{
+  content:"";flex:0 0 7px;height:7px;border-radius:50%;
+  border:2px solid var(--copper);background:var(--board);
+}
+h2.section-title{
+  font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,4vw,2.4rem);
+  letter-spacing:.01em;margin-bottom:2.4rem;
+}
+h2.section-title em{font-style:normal;color:var(--copper)}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- hero ---------- */
+#hero{
+  min-height:100svh;display:flex;align-items:center;padding:120px 0 60px;
+}
+#scope{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.9}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.25fr .75fr;gap:3rem;align-items:center;width:100%}
+.hero-tag{
+  font-family:var(--mono);font-size:.85rem;color:var(--signal);margin-bottom:1.1rem;
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.hero-tag::before{content:"●";color:var(--signal);animation:blinkdot 2.2s infinite}
+@keyframes blinkdot{0%,100%{opacity:1}50%{opacity:.25}}
+h1{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(2.4rem,6.4vw,4.2rem);line-height:1.06;letter-spacing:.005em;
+  margin-bottom:1rem;
+}
+h1 .copper{color:var(--copper)}
+.typeline{
+  font-family:var(--mono);font-size:clamp(1rem,2.4vw,1.25rem);
+  color:var(--silk);min-height:2em;margin-bottom:1.2rem;
+}
+.typeline .prompt{color:var(--signal)}
+.typeline .cursor{
+  display:inline-block;width:.6em;height:1.15em;background:var(--copper);
+  vertical-align:text-bottom;margin-left:2px;animation:blink 1s steps(1) infinite;
+}
+@keyframes blink{50%{opacity:0}}
+.hero-sub{color:var(--muted);max-width:560px;margin-bottom:2rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:2.2rem}
+.btn{
+  font-family:var(--mono);font-size:.88rem;letter-spacing:.03em;text-decoration:none;
+  padding:.85rem 1.5rem;border-radius:8px;cursor:pointer;border:1px solid transparent;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease,color .18s;
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--copper);color:var(--btn-text);font-weight:500}
+.btn-solid:hover{box-shadow:0 6px 24px color-mix(in srgb, var(--copper) 35%, transparent);background:var(--copper-bright)}
+.btn-ghost{border-color:var(--copper-dim);color:var(--silk);background:color-mix(in srgb, var(--board-2) 55%, transparent)}
+.btn-ghost:hover{border-color:var(--copper);color:var(--copper-bright)}
+.hero-links{display:flex;gap:1rem;flex-wrap:wrap}
+.icon-link{
+  width:42px;height:42px;border-radius:9px;border:1px solid var(--copper-dim);
+  display:inline-flex;align-items:center;justify-content:center;color:var(--muted);
+  background:color-mix(in srgb, var(--board-2) 55%, transparent);transition:all .2s;
+}
+.icon-link:hover{color:var(--copper-bright);border-color:var(--copper);transform:translateY(-2px)}
+.icon-link svg{width:19px;height:19px;fill:currentColor}
+
+/* hero "module" card */
+.hero-card{
+  background:linear-gradient(160deg,var(--board-2),var(--board-3));
+  border:1px solid var(--copper-dim);border-radius:14px;padding:1.6rem;
+  font-family:var(--mono);font-size:.82rem;color:var(--muted);
+  position:relative;box-shadow:var(--shadow-card);
+}
+.hero-card::before,.hero-card::after{
+  content:"";position:absolute;width:9px;height:9px;border-radius:50%;
+  border:2px solid var(--copper);background:var(--board);
+}
+.hero-card::before{top:10px;left:10px}
+.hero-card::after{bottom:10px;right:10px}
+.hero-card .chiphead{display:flex;align-items:center;gap:.9rem;margin-bottom:1.1rem}
+.hero-card img{
+  width:64px;height:64px;border-radius:10px;border:1px solid var(--copper-dim);object-fit:cover;
+}
+.hero-card .chiphead b{color:var(--silk);font-size:.9rem;display:block;font-weight:500}
+.hero-card .chiphead span{color:var(--copper);font-size:.74rem}
+.hero-card ul{list-style:none}
+.hero-card li{
+  padding:.42rem 0;border-top:1px dashed color-mix(in srgb, var(--muted) 18%, transparent);
+  display:flex;justify-content:space-between;gap:1rem;
+}
+.hero-card li b{color:var(--silk);font-weight:500;text-align:right}
+.hero-card li .ok{color:var(--signal)}
+
+.scroll-hint{
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spacing:.2em;
+  animation:hintfloat 2.6s ease-in-out infinite;z-index:1;
+}
+@keyframes hintfloat{50%{transform:translate(-50%,8px)}}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:start}
+.about-text p{color:var(--muted);margin-bottom:1.1rem}
+.about-text p strong{color:var(--silk);font-weight:600}
+.info-list{display:grid;grid-template-columns:1fr 1fr;gap:.8rem 1.6rem;margin-top:1.4rem}
+.info-list div{font-size:.92rem}
+.info-list span{font-family:var(--mono);font-size:.74rem;color:var(--copper);display:block;letter-spacing:.08em;text-transform:uppercase}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.stat{
+  background:var(--board-2);border:1px solid var(--copper-dim);border-radius:var(--radius);
+  padding:1.4rem 1.2rem;position:relative;overflow:hidden;
+}
+.stat::after{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(var(--copper),transparent);
+}
+.stat b{
+  font-family:var(--display);font-size:2.1rem;color:var(--copper-bright);
+  display:block;line-height:1.1;
+}
+.stat span{font-family:var(--mono);font-size:.74rem;color:var(--muted);letter-spacing:.05em}
+
+/* ---------- experience: copper trace timeline ---------- */
+.timeline{position:relative;margin-left:8px}
+.timeline::before{
+  content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;
+  background:linear-gradient(var(--copper) 60%,var(--copper-dim));
+  box-shadow:0 0 10px color-mix(in srgb, var(--copper) 35%, transparent);
+}
+.t-item{position:relative;padding:0 0 2.6rem 2.4rem}
+.t-item:last-child{padding-bottom:.5rem}
+.t-item::before{ /* via pad */
+  content:"";position:absolute;left:-7px;top:8px;width:16px;height:16px;border-radius:50%;
+  border:3px solid var(--copper);background:var(--board);
+  box-shadow:0 0 12px color-mix(in srgb, var(--copper) 50%, transparent);
+}
+.t-date{font-family:var(--mono);font-size:.76rem;color:var(--signal);letter-spacing:.06em}
+.t-item h3{font-family:var(--display);font-size:1.18rem;margin:.25rem 0 .1rem}
+.t-item .role{font-family:var(--mono);font-size:.82rem;color:var(--copper);margin-bottom:.7rem;display:block}
+.t-item ul{list-style:none;color:var(--muted);font-size:.95rem}
+.t-item li{padding-left:1.2rem;position:relative;margin-bottom:.45rem}
+.t-item li::before{content:"▸";position:absolute;left:0;color:var(--copper)}
+.t-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.8rem}
+.tag{
+  font-family:var(--mono);font-size:.7rem;color:var(--copper-bright);
+  background:color-mix(in srgb, var(--copper) 10%, transparent);border:1px solid var(--copper-dim);
+  padding:.18rem .55rem;border-radius:5px;letter-spacing:.03em;
+}
+
+/* ---------- projects ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem}
+.filter-btn{
+  font-family:var(--mono);font-size:.8rem;letter-spacing:.04em;cursor:pointer;
+  background:transparent;border:1px solid var(--copper-dim);color:var(--muted);
+  padding:.5rem 1.05rem;border-radius:999px;transition:all .2s;
+}
+.filter-btn:hover{color:var(--silk);border-color:var(--copper)}
+.filter-btn.active{background:var(--copper);border-color:var(--copper);color:var(--btn-text);font-weight:500}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.proj{
+  background:var(--board-2);border:1px solid var(--copper-dim);border-radius:12px;
+  padding:1.5rem 1.4rem;display:flex;flex-direction:column;gap:.7rem;position:relative;
+  transition:opacity .7s ease,transform .25s ease,border-color .25s,box-shadow .25s;
+}
+.proj::before{
+  content:attr(data-ref);position:absolute;top:12px;right:14px;
+  font-family:var(--mono);font-size:.68rem;color:color-mix(in srgb, var(--muted) 50%, transparent);letter-spacing:.1em;
+}
+.proj:hover{transform:translateY(-5px);border-color:var(--copper);box-shadow:var(--shadow-pop)}
+.proj.featured{border-color:color-mix(in srgb, var(--copper) 55%, transparent);background:linear-gradient(165deg,var(--board-3),var(--board-2))}
+.proj .feat-pill{
+  position:absolute;top:0;left:1.4rem;transform:translateY(-50%);
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:var(--btn-text);
+  background:var(--copper);padding:.18rem .6rem;border-radius:999px;font-weight:500;
+}
+.proj .picon{
+  width:44px;height:44px;border-radius:10px;background:color-mix(in srgb, var(--copper) 12%, transparent);
+  display:flex;align-items:center;justify-content:center;font-size:1.25rem;
+  border:1px solid var(--copper-dim);
+}
+.proj h3{font-family:var(--display);font-size:1.06rem;line-height:1.3}
+.proj p{color:var(--muted);font-size:.88rem;flex:1}
+.proj .t-tags{margin-top:0}
+.proj .links{display:flex;gap:.8rem;margin-top:.3rem}
+.proj .links a{
+  font-family:var(--mono);font-size:.76rem;text-decoration:none;color:var(--signal);
+  display:inline-flex;align-items:center;gap:.35rem;
+}
+.proj .links a:hover{color:var(--copper-bright)}
+.proj.hide{display:none}
+
+/* ---------- skills ---------- */
+.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.skill-card{
+  background:var(--board-2);border:1px solid var(--copper-dim);border-radius:12px;
+  padding:1.5rem 1.4rem;transition:border-color .25s,transform .25s;
+}
+.skill-card:hover{border-color:var(--copper);transform:translateY(-4px)}
+.skill-card h3{
+  font-family:var(--display);font-size:1.02rem;margin-bottom:1rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.skill-card h3 .dot{width:8px;height:8px;border-radius:50%;background:var(--copper);box-shadow:0 0 8px color-mix(in srgb, var(--copper) 60%, transparent)}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.chips span{
+  font-family:var(--mono);font-size:.74rem;color:var(--silk);
+  background:color-mix(in srgb, var(--silk) 5%, transparent);border:1px solid color-mix(in srgb, var(--muted) 22%, transparent);
+  padding:.24rem .6rem;border-radius:6px;transition:all .2s;
+}
+.chips span:hover{border-color:var(--copper);color:var(--copper-bright)}
+
+/* ---------- education & achievements ---------- */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;align-items:start}
+.edu-card,.ach-card{
+  background:var(--board-2);border:1px solid var(--copper-dim);border-radius:12px;padding:1.7rem 1.5rem;
+}
+.edu-card h3{font-family:var(--display);font-size:1.15rem;margin-bottom:.2rem}
+.edu-card .t-date{display:block;margin-bottom:.8rem}
+.edu-card p{color:var(--muted);font-size:.92rem}
+.ach-card ul{list-style:none}
+.ach-card li{
+  display:flex;gap:.8rem;align-items:flex-start;padding:.6rem 0;
+  border-bottom:1px dashed color-mix(in srgb, var(--muted) 16%, transparent);color:var(--muted);font-size:.93rem;
+}
+.ach-card li:last-child{border-bottom:none}
+.ach-card li .a-ico{flex:0 0 auto;font-size:1.05rem;line-height:1.5}
+.ach-card li b{color:var(--silk);font-weight:600}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:2.4rem;align-items:start}
+.c-cards{display:grid;gap:1rem}
+.c-card{
+  display:flex;align-items:center;gap:1rem;text-decoration:none;
+  background:var(--board-2);border:1px solid var(--copper-dim);border-radius:12px;
+  padding:1.05rem 1.2rem;transition:border-color .2s,transform .2s;
+}
+.c-card:hover{border-color:var(--copper);transform:translateX(5px)}
+.c-card .picon{flex:0 0 44px}
+.c-card span{font-family:var(--mono);font-size:.72rem;color:var(--copper);display:block;letter-spacing:.1em;text-transform:uppercase}
+.c-card b{color:var(--silk);font-weight:500;font-size:.92rem;word-break:break-all}
+
+form{
+  background:var(--board-2);border:1px solid var(--copper-dim);border-radius:14px;padding:1.8rem;
+}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.f-group{margin-bottom:1.1rem}
+label{
+  font-family:var(--mono);font-size:.74rem;color:var(--copper);letter-spacing:.1em;
+  text-transform:uppercase;display:block;margin-bottom:.4rem;
+}
+input,textarea{
+  width:100%;background:var(--board);border:1px solid color-mix(in srgb, var(--muted) 25%, transparent);
+  border-radius:8px;color:var(--silk);font-family:var(--body);font-size:.95rem;
+  padding:.8rem .95rem;transition:border-color .2s;
+}
+input:focus,textarea:focus{border-color:var(--copper);outline:none}
+input.err,textarea.err{border-color:var(--danger)}
+.f-error{font-family:var(--mono);font-size:.72rem;color:var(--danger);margin-top:.3rem;min-height:1em;display:block}
+textarea{resize:vertical;min-height:130px}
+.form-msg{
+  font-family:var(--mono);font-size:.82rem;margin-top:1rem;display:none;
+  padding:.7rem 1rem;border-radius:8px;
+}
+.form-msg.ok{display:block;color:var(--signal);background:color-mix(in srgb, var(--signal) 8%, transparent);border:1px solid color-mix(in srgb, var(--signal) 30%, transparent)}
+.form-msg.bad{display:block;color:var(--danger);background:rgba(224,106,106,.08);border:1px solid rgba(224,106,106,.3)}
+.btn[disabled]{opacity:.6;cursor:wait;transform:none}
+
+/* ---------- footer ---------- */
+footer{
+  margin-top:90px;border-top:1px solid var(--copper-dim);padding:2.2rem 0;
+  text-align:center;color:var(--muted);font-family:var(--mono);font-size:.78rem;
+}
+footer .hero-links{justify-content:center;margin-bottom:1.2rem}
+footer .sig{color:var(--copper)}
+
+
+/* ---------- animation layer ---------- */
+body{transition:background .35s ease,color .35s ease}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+#hero .hero-tag{animation:rise .7s .05s both}
+#hero h1{animation:rise .7s .15s both}
+#hero .typeline{animation:rise .7s .25s both}
+#hero .hero-sub{animation:rise .7s .35s both}
+#hero .cta-row{animation:rise .7s .45s both}
+#hero .hero-links{animation:rise .7s .55s both}
+#hero .hero-card{animation:rise .9s .4s both}
+#hero::before{
+  content:"";position:absolute;top:-18%;right:-12%;width:55vw;height:55vw;
+  max-width:760px;max-height:760px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle, color-mix(in srgb, var(--copper) 7%, transparent), transparent 65%);
+}
+.logo .pad{animation:padglow 3s ease-in-out infinite}
+@keyframes padglow{50%{box-shadow:0 0 16px color-mix(in srgb, var(--copper) 90%, transparent)}}
+.btn{position:relative;overflow:hidden}
+.btn-solid::after{
+  content:"";position:absolute;top:0;bottom:0;left:-80%;width:50%;
+  transform:skewX(-20deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);
+  transition:left .55s ease;
+}
+.btn-solid:hover::after{left:130%}
+h2.section-title::after{
+  content:"";display:block;width:0;height:2px;margin-top:.55rem;
+  background:linear-gradient(90deg,var(--copper),var(--signal),transparent);
+  transition:width 1s ease .15s;
+}
+h2.section-title.in::after{width:140px}
+.proj::after{
+  content:"";position:absolute;inset:0;border-radius:12px;pointer-events:none;
+  opacity:0;transition:opacity .35s;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,40%), color-mix(in srgb, var(--copper) 12%, transparent), transparent 70%);
+}
+.proj:hover::after{opacity:1}
+.timeline::before{transform:scaleY(0);transform-origin:top;transition:transform 1.4s ease .2s}
+.timeline.in::before{transform:scaleY(1)}
+.t-item::before{transform:scale(0);transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.timeline.in .t-item::before{transform:scale(1)}
+.timeline.in .t-item:nth-child(1)::before{transition-delay:.25s;animation:padpulse 2.8s 1.3s infinite}
+.timeline.in .t-item:nth-child(2)::before{transition-delay:.55s}
+.timeline.in .t-item:nth-child(3)::before{transition-delay:.85s}
+.timeline.in .t-item:nth-child(4)::before{transition-delay:1.15s}
+@keyframes padpulse{50%{box-shadow:0 0 24px color-mix(in srgb, var(--copper) 85%, transparent)}}
+.chips span:hover{transform:translateY(-2px)}
+.nav-actions{display:flex;gap:.6rem;align-items:center}
+.theme-btn{
+  display:inline-flex;align-items:center;gap:.5rem;background:none;cursor:pointer;
+  border:1px solid var(--copper-dim);color:var(--muted);
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;
+  padding:.42rem .75rem;border-radius:999px;transition:all .2s;
+}
+.theme-btn:hover{border-color:var(--copper);color:var(--silk)}
+.theme-btn .sw{
+  width:10px;height:10px;border-radius:50%;background:var(--copper);
+  box-shadow:0 0 8px color-mix(in srgb, var(--copper) 60%, transparent);
+}
+
+/* ---------- responsive ---------- */
+@media(max-width:960px){
+  .proj-grid,.skill-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-grid{grid-template-columns:1fr;gap:2.4rem}
+  .hero-card{max-width:430px}
+}
+@media(max-width:760px){
+  nav.menu{
+    position:fixed;top:64px;right:0;left:0;flex-direction:column;gap:0;
+    background:color-mix(in srgb, var(--board) 97%, transparent);border-bottom:1px solid var(--copper-dim);
+    max-height:0;overflow:hidden;transition:max-height .3s ease;align-items:stretch;
+  }
+  nav.menu.open{max-height:420px}
+  nav.menu a{padding:1rem 24px;border-bottom:1px solid color-mix(in srgb, var(--muted) 10%, transparent)}
+  .nav-toggle{display:block}
+  .about-grid,.edu-grid,.contact-grid{grid-template-columns:1fr}
+  .proj-grid,.skill-grid{grid-template-columns:1fr}
+  .f-row{grid-template-columns:1fr}
+  section{padding:80px 0 20px}
+  .info-list{grid-template-columns:1fr}
+}
+
+/* ---------- reduced motion ---------- */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
 </head>
 <body>
-    <a href="#main" class="skip-link">Skip to content</a>
 
-    <div class="cursor-ring" id="cursorRing"></div>
-    <div class="cursor-dot" id="cursorDot"></div>
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="trace-progress" aria-hidden="true"></div>
 
-    <div class="bg-grid"></div>
-    <div class="bg-glow glow-1"></div>
-    <div class="bg-glow glow-2"></div>
-
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo">
-                <span class="logo-bracket">&lt;</span>MMB<span class="logo-bracket">/&gt;</span>
-            </a>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#hero" aria-label="Home"><span class="pad" aria-hidden="true"></span>mutahhar<b>.baig</b></a>
+    <nav class="menu" id="navMenu" aria-label="Primary navigation">
+      <a href="#about">about</a>
+      <a href="#experience">experience</a>
+      <a href="#projects">projects</a>
+      <a href="#skills">skills</a>
+      <a href="#education">education</a>
+      <a href="#contact">contact</a>
     </nav>
+    <div class="nav-actions">
+      <button class="theme-btn" id="themeBtn" aria-label="Switch color theme"><span class="sw" aria-hidden="true"></span><span id="themeLabel">COPPER</span></button>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">MENU</button>
+    </div>
+  </div>
+</header>
 
-    <main id="main">
+<main id="main">
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <p class="hero-greeting">
-                    <span class="dot-pulse"></span>
-                    Available for opportunities
-                </p>
-                <h1 class="hero-title">
-                    Hi, I'm <span class="gradient-text">Mutahhar Baig</span>
-                </h1>
-                <h2 class="hero-subtitle">
-                    <span class="typed-text" id="typedText"></span><span class="cursor">|</span>
-                </h2>
-                <p class="hero-description">
-                    Electronics Engineer from UET Taxila specializing in
-                    <span class="highlight">AI, Machine Learning, Deep Learning,</span>
-                    and <span class="highlight">Embedded Systems</span>.
-                    I build intelligent edge-deployed solutions from speech-to-text pipelines
-                    to autonomous agri-robots.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">
-                        <i class="fas fa-rocket"></i> View My Work
-                    </a>
-                    <a href="assets/resume.pdf" class="btn btn-secondary" download>
-                        <i class="fas fa-file-arrow-down"></i> Download CV
-                    </a>
-                    <a href="#contact" class="btn btn-ghost">
-                        <i class="fas fa-paper-plane"></i> Get In Touch
-                    </a>
-                </div>
-                <div class="hero-socials">
-                    <a href="https://github.com/MutahharBaig" target="_blank" rel="noopener" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/engr-muhammad-mutahhar-baig-91586a324/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="mailto:mutahharbaig215@gmail.com" aria-label="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="tel:+923200974951" aria-label="Phone">
-                        <i class="fas fa-phone"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="profile-wrapper">
-                    <div class="profile-ring"></div>
-                    <div class="profile-img">
-                        <img src="assets/profile.jpg" alt="Muhammad Mutahhar Baig" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;profile-placeholder&quot;><i class=&quot;fas fa-user&quot;></i></div>'">
-                    </div>
-                    <div class="float-badge badge-1">
-                        <i class="fas fa-microchip"></i> Embedded
-                    </div>
-                    <div class="float-badge badge-2">
-                        <i class="fas fa-brain"></i> AI / ML
-                    </div>
-                    <div class="float-badge badge-3">
-                        <i class="fas fa-robot"></i> Robotics
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a href="#about" class="scroll-indicator" aria-label="Scroll to about">
-            <span></span>
+<!-- ================= HERO ================= -->
+<section id="hero" aria-label="Introduction">
+  <canvas id="scope" aria-hidden="true"></canvas>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="hero-tag">signal acquired — Islamabad, Pakistan</p>
+      <h1>Muhammad<br>Mutahhar <span class="copper">Baig</span></h1>
+      <p class="typeline" aria-live="polite"><span class="prompt">&gt;_</span> <span id="typed"></span><span class="cursor" aria-hidden="true"></span></p>
+      <p class="hero-sub">Electronics Engineer from UET Taxila. I build firmware and deploy compressed deep-learning models on the kind of hardware most people consider too small for AI — from ESP32-S3 audio devices to Rockchip NPUs.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="#projects">View My Work</a>
+        <a class="btn btn-ghost" href="assets/resume.pdf" download>↓ Download CV</a>
+        <a class="btn btn-ghost" href="#contact">Get In Touch</a>
+      </div>
+      <div class="hero-links">
+        <a class="icon-link" href="https://github.com/MutahharBaig" target="_blank" rel="noopener" aria-label="GitHub profile">
+          <svg viewBox="0 0 24 24"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.2 4.6 18.2 5 18.2 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
         </a>
-    </section>
-
-    <!-- About Section -->
-    <section class="section about" id="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">01 Introduction</span>
-                <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
-            </div>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>
-                        I'm an <strong>Electronics Engineer</strong> from <strong>UET Taxila</strong> with a deep passion
-                        for bridging the gap between hardware and intelligence. My work centers on
-                        deploying machine learning at the edge making AI accessible on
-                        constrained microcontrollers and embedded platforms.
-                    </p>
-                    <p>
-                        With 1+ year of professional hands-on experience, I've engineered
-                        speech-to-text pipelines, designed autonomous agri-rovers, optimized
-                        deep learning models with quantization & pruning, and built firmware for
-                        ESP32-S3, Raspberry Pi, STM32, and Rockchip platforms.
-                    </p>
-                    <p>
-                        I'm also a proud <strong>Hafiz-e-Quran</strong> and an active <strong>IEEE Student Member</strong>
-                        (Consumer Technology Society & Engineering in Medicine and Biology Society).
-                    </p>
-                    <div class="about-info">
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span><strong>Location:</strong> Islamabad, Pakistan</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span><strong>Degree:</strong> BS Electronics Eng. (UET Taxila)</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-briefcase"></i>
-                            <span><strong>Status:</strong> Open to opportunities</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-language"></i>
-                            <span><strong>Languages:</strong> English, Urdu</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-code-branch"></i></div>
-                        <div class="stat-num" data-target="10">0</div>
-                        <div class="stat-label">Projects Built</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-microchip"></i></div>
-                        <div class="stat-num" data-target="15">0</div>
-                        <div class="stat-label">Hardware Platforms</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-trophy"></i></div>
-                        <div class="stat-num" data-target="1">0</div>
-                        <div class="stat-label">Open House Winner</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
-                        <div class="stat-num" data-target="1">0</div>
-                        <div class="stat-label">Conference Paper</div>
-                    </div>
-                </div>
-            </div>
+        <a class="icon-link" href="https://linkedin.com/in/muhammad-mutahhar-baig-91586a324" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.2 8h4.6v14.8H.2V8zm7.6 0h4.4v2h.1c.6-1.1 2.1-2.3 4.3-2.3 4.6 0 5.4 3 5.4 6.9v8.2h-4.6v-7.3c0-1.7 0-4-2.4-4s-2.8 1.9-2.8 3.9v7.4H7.8V8z"/></svg>
+        </a>
+        <a class="icon-link" href="mailto:mutahharbaig215@gmail.com" aria-label="Send email">
+          <svg viewBox="0 0 24 24"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.4L3.5 6v12h17V6L12 12.4zM4.4 6l7.6 5.7L19.6 6H4.4z"/></svg>
+        </a>
+        <a class="icon-link" href="tel:+923200974951" aria-label="Call phone">
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <aside class="hero-card" aria-label="Engineer summary module">
+      <div class="chiphead">
+        <img src="https://avatars.githubusercontent.com/u/179309703?v=4" alt="Portrait of Muhammad Mutahhar Baig" loading="lazy" width="64" height="64">
+        <div>
+          <b>MODULE: M.M.BAIG-REV2026</b>
+          <span>EMBEDDED · EDGE-AI · DSP</span>
         </div>
-    </section>
+      </div>
+      <ul>
+        <li>STATUS <b class="ok">● ONLINE — open to work</b></li>
+        <li>DEGREE <b>BSc Electronics, UET Taxila</b></li>
+        <li>CURRENT <b>Khayal Incotech</b></li>
+        <li>STACK <b>C/C++ · Python · MATLAB</b></li>
+        <li>TARGETS <b>ESP32 · STM32 · RK35xx · Pi</b></li>
+        <li>RUNTIME <b>TFLite · ONNX · RKNN</b></li>
+      </ul>
+    </aside>
+  </div>
+  <span class="scroll-hint" aria-hidden="true">SCROLL ▼</span>
+</section>
 
-    <!-- Experience Section -->
-    <section class="section experience" id="experience">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">02 Career Path</span>
-                <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Embedded & AI Engineer</h3>
-                            <span class="timeline-date">Dec 2025 - Present</span>
-                        </div>
-                        <p class="timeline-company">
-                            <i class="fas fa-building"></i> Khayal Incotech
-                        </p>
-                        <ul class="timeline-list">
-                            <li>Deployed and optimized <strong>Speech-to-Text pipelines</strong> (Whisper, Faster-Whisper, Deepgram) on Hugging Face Spaces 33-min processing for 1-hour audio with REST API integration.</li>
-                            <li>Engineered an <strong>ESP32-S3 audio acquisition system</strong> with I2S MEMS mics, SD storage, and dual wireless protocols (BLE & Wi-Fi Direct).</li>
-                            <li>Conducted benchmark study across <strong>8+ STT APIs</strong> (AssemblyAI, Groq, OpenAI, Google Cloud) on speed, accuracy & cost.</li>
-                            <li>Developed embedded firmware for an interactive children's audio device <strong>FreeRTOS multi-tasking</strong> (3 concurrent tasks), interrupt-driven rotary encoder, real-time I2S streaming.</li>
-                            <li>R&D for a <strong>pocket-sized AI device</strong> exploring miniaturized on-device AI architectures.</li>
-                        </ul>
-                        <div class="timeline-tags">
-                            <span>ESP32-S3</span><span>FreeRTOS</span><span>Whisper</span><span>BLE</span><span>I2S</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Embedded Systems Engineer</h3>
-                            <span class="timeline-date">Jul 2025 - Nov 2025</span>
-                        </div>
-                        <p class="timeline-company">
-                            <i class="fas fa-building"></i> MachaDev Engineering, Air University Islamabad
-                        </p>
-                        <ul class="timeline-list">
-                            <li>Designed and developed embedded systems and electronic hardware components.</li>
-                            <li>Tested and maintained firmware for <strong>CH32, Arduino, ESP32, Pi Zero, Pi 5, RK3566, RK3576, RK3588, STM32</strong>.</li>
-                            <li>Developed real-time device software using <strong>C/C++, Python, MATLAB</strong>.</li>
-                            <li>Trained, optimized, and deployed ML/DL models to edge devices via <strong>quantization, pruning, TF Lite, ONNX, RKNN</strong>.</li>
-                            <li>Implemented image-processing pipelines for <strong>object detection, gesture recognition, and sign-language</strong>.</li>
-                        </ul>
-                        <div class="timeline-tags">
-                            <span>Rockchip</span><span>TensorFlow Lite</span><span>ONNX</span><span>RKNN</span><span>OpenCV</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>AI Engineering Intern</h3>
-                            <span class="timeline-date">Aug 2024 - Feb 2025</span>
-                        </div>
-                        <p class="timeline-company">
-                            <i class="fas fa-building"></i> NICAT National Incubation Center for Agri-Tech, NASTP
-                        </p>
-                        <ul class="timeline-list">
-                            <li>Developed and optimized an <strong>AI-powered weed detection system</strong> for precision agriculture.</li>
-                            <li>Implemented model optimization for real-time deployment on edge devices in field conditions.</li>
-                            <li>Linked my <strong>Final Year Project</strong> directly with this industry incubation.</li>
-                        </ul>
-                        <div class="timeline-tags">
-                            <span>Computer Vision</span><span>Edge AI</span><span>Agriculture</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>AI/ML Intern</h3>
-                            <span class="timeline-date">Aug 2024</span>
-                        </div>
-                        <p class="timeline-company">
-                            <i class="fas fa-building"></i> Pakistan Aeronautical Complex (PAC) Kamra
-                        </p>
-                        <ul class="timeline-list">
-                            <li>Hands-on exposure to <strong>data preprocessing</strong> for predictive maintenance systems.</li>
-                            <li>Documented performance evaluation of AI-based fault detection models accuracy, precision, recall.</li>
-                            <li>Built foundational understanding of ML in industrial settings.</li>
-                        </ul>
-                        <div class="timeline-tags">
-                            <span>Predictive Maintenance</span><span>ML</span><span>Industrial AI</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- ================= ABOUT ================= -->
+<section id="about" aria-labelledby="about-title">
+  <div class="wrap">
+    <p class="eyebrow reveal">01 // about</p>
+    <h2 class="section-title reveal" id="about-title">From signal <em>in</em> to intelligence <em>out</em></h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I work at the layer where <strong>machine learning meets bare metal</strong>. My day-to-day spans training and compressing deep-learning models — quantization, pruning, TensorFlow Lite, ONNX, RKNN — and writing the C/C++ firmware that runs them in real time on microcontrollers and edge processors.</p>
+        <p>That range comes from doing both ends seriously: <strong>FreeRTOS multi-tasking firmware</strong> on the ESP32-S3, speech-to-text pipelines on Hugging Face Spaces, computer-vision systems for precision agriculture, and biomedical signal processing on ECG and PCG data.</p>
+        <p>I won the <strong>2025 Open House competition</strong> of the Electronics Engineering Department at UET Taxila with an autonomous AI-powered Agri-Rover, and my final-year project was selected for the All Punjab Expo 2025.</p>
+        <div class="info-list">
+          <div><span>Location</span>Islamabad, Pakistan</div>
+          <div><span>Email</span>mutahharbaig215@gmail.com</div>
+          <div><span>Degree</span>BSc Electronics Engineering</div>
+          <div><span>Focus</span>Embedded Systems · Edge AI</div>
         </div>
-    </section>
+      </div>
+      <div class="stats reveal" aria-label="Key statistics">
+        <div class="stat"><b><span class="count" data-target="12">0</span>+</b><span>projects shipped</span></div>
+        <div class="stat"><b><span class="count" data-target="10">0</span>+</b><span>MCU / SoC platforms</span></div>
+        <div class="stat"><b><span class="count" data-target="8">0</span>+</b><span>STT APIs benchmarked</span></div>
+        <div class="stat"><b><span class="count" data-target="90">0</span>%</b><span>crop detection accuracy</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Projects Section -->
-    <section class="section projects" id="projects">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">03 Featured Work</span>
-                <h2 class="section-title">My <span class="gradient-text">Projects</span></h2>
-            </div>
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience" aria-labelledby="exp-title">
+  <div class="wrap">
+    <p class="eyebrow reveal">02 // experience</p>
+    <h2 class="section-title reveal" id="exp-title">Where the trace has <em>run</em></h2>
+    <div class="timeline">
 
-            <div class="projects-grid">
+      <article class="t-item reveal">
+        <span class="t-date">DEC 2025 — PRESENT</span>
+        <h3>Khayal Incotech</h3>
+        <span class="role">Embedded & AI Engineer</span>
+        <ul>
+          <li>Deployed and optimized speech-to-text pipelines (Whisper, Faster-Whisper, Deepgram) on Hugging Face Spaces — 1 hour of audio processed in 33 minutes, with REST API integration for production.</li>
+          <li>Engineered an ESP32-S3 audio acquisition system: I2S MEMS microphones, SD storage, and dual wireless transfer over BLE and Wi-Fi Direct for mobile app integration.</li>
+          <li>Benchmarked 8+ STT APIs (AssemblyAI, Groq, OpenAI, Google Cloud) on speed, accuracy, and cost to drive deployment decisions.</li>
+          <li>Built firmware for an interactive children's audio device — FreeRTOS multi-tasking, interrupt-driven rotary encoder navigation, real-time I2S streaming and hardware volume control.</li>
+          <li>R&D on a pocket-sized AI device: miniaturized hardware and software architectures for on-device AI.</li>
+        </ul>
+        <div class="t-tags"><span class="tag">ESP32-S3</span><span class="tag">FreeRTOS</span><span class="tag">Whisper</span><span class="tag">I2S</span><span class="tag">BLE</span></div>
+      </article>
 
-                <article class="project-card featured">
-                    <div class="project-banner">
-                        <i class="fas fa-tractor"></i>
-                        <span class="project-badge">Final Year Project</span>
-                    </div>
-                    <div class="project-body">
-                        <h3>AI-Powered Agri-Rover</h3>
-                        <p class="project-subtitle">Autonomous Crop Management System</p>
-                        <p class="project-desc">
-                            Conceptualized and built a fully autonomous agri-rover with GPS navigation
-                            and three operational modes (Auto, Manual, Guided). Integrates RGB cameras,
-                            soil moisture probes, and NPK nutrient sensors for plant health & soil fertility
-                            assessment. Real-time crop monitoring detects onion, garlic, and potato plants
-                            with <strong>>90% accuracy</strong>.
-                        </p>
-                        <div class="project-meta">
-                            <span><i class="fas fa-award"></i> Selected for All Punjab Expo 2025</span>
-                        </div>
-                        <div class="project-tags">
-                            <span>OpenCV</span><span>TensorFlow</span><span>BTS7960</span><span>GPS</span><span>Sensor Fusion</span>
-                        </div>
-                        <div class="project-links">
-                            <!-- TODO: replace # with the Agri-Rover GitHub repo URL -->
-                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
-                            <!-- TODO: replace # with the demo video / live URL -->
-                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fas fa-play"></i> Demo</a>
-                        </div>
-                    </div>
-                </article>
+      <article class="t-item reveal">
+        <span class="t-date">JUL 2025 — NOV 2025</span>
+        <h3>MachaDev Engineering — Air University, Islamabad</h3>
+        <span class="role">Embedded Systems Engineer</span>
+        <ul>
+          <li>Designed and developed embedded systems and electronic hardware components.</li>
+          <li>Wrote and maintained firmware across CH32, Arduino, ESP32, Pi Zero, Pi 5, RK3566/RK3576/RK3588, and STM32.</li>
+          <li>Built real-time device software in C/C++, Python, and MATLAB.</li>
+          <li>Trained, optimized, and deployed ML/DL models to edge devices — quantization, pruning, TFLite, ONNX, RKNN.</li>
+          <li>Implemented image-processing pipelines for object detection, gesture recognition, and sign language.</li>
+        </ul>
+        <div class="t-tags"><span class="tag">RK3588</span><span class="tag">STM32</span><span class="tag">RKNN</span><span class="tag">OpenCV</span><span class="tag">C/C++</span></div>
+      </article>
 
-                <article class="project-card">
-                    <div class="project-banner">
-                        <i class="fas fa-microphone-lines"></i>
-                    </div>
-                    <div class="project-body">
-                        <h3>Speech-to-Text Pipeline</h3>
-                        <p class="project-subtitle">Production-Ready STT on Hugging Face Spaces</p>
-                        <p class="project-desc">
-                            Deployed Whisper, Faster-Whisper, and Deepgram pipelines achieving 33-min
-                            processing for 1-hour audio with REST API integration for scalable production use.
-                        </p>
-                        <div class="project-tags">
-                            <span>Whisper</span><span>FastAPI</span><span>HF Spaces</span><span>Python</span>
-                        </div>
-                        <div class="project-links">
-                            <!-- TODO: replace # with the STT pipeline GitHub repo URL -->
-                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
-                            <!-- TODO: replace # with the Hugging Face Space URL -->
-                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> HF Space</a>
-                        </div>
-                    </div>
-                </article>
+      <article class="t-item reveal">
+        <span class="t-date">AUG 2024 — FEB 2025</span>
+        <h3>NICAT — National Incubation Center for Agri-Tech, NASTP</h3>
+        <span class="role">AI Engineering Intern</span>
+        <ul>
+          <li>Developed and optimized an AI-powered weed detection system for precision agriculture, cutting herbicide usage through targeted application.</li>
+          <li>Applied model optimization for real-time inference on edge devices in field conditions with limited compute.</li>
+          <li>Final-year project work linked directly with this industry partner.</li>
+        </ul>
+        <div class="t-tags"><span class="tag">Computer Vision</span><span class="tag">Edge Deployment</span><span class="tag">AgriTech</span></div>
+      </article>
 
-                <article class="project-card">
-                    <div class="project-banner">
-                        <i class="fas fa-volume-high"></i>
-                    </div>
-                    <div class="project-body">
-                        <h3>ESP32-S3 Audio Acquisition System</h3>
-                        <p class="project-subtitle">Wireless Audio Recorder</p>
-                        <p class="project-desc">
-                            I2S MEMS microphones with SD card storage and dual wireless transfer
-                            (BLE & Wi-Fi Direct) designed for seamless mobile app integration.
-                        </p>
-                        <div class="project-tags">
-                            <span>ESP32-S3</span><span>I2S</span><span>BLE</span><span>Wi-Fi Direct</span>
-                        </div>
-                        <div class="project-links">
-                            <!-- TODO: replace # with the ESP32-S3 audio repo URL -->
-                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
-                        </div>
-                    </div>
-                </article>
+      <article class="t-item reveal">
+        <span class="t-date">AUG 2024</span>
+        <h3>PAC Kamra</h3>
+        <span class="role">Engineering Intern</span>
+        <ul>
+          <li>Hands-on exposure to data preprocessing and analysis used in predictive-maintenance systems.</li>
+          <li>Documented evaluation of AI-based fault-detection models: accuracy, precision, recall.</li>
+          <li>Built a working understanding of ML in industrial maintenance workflows.</li>
+        </ul>
+        <div class="t-tags"><span class="tag">Predictive Maintenance</span><span class="tag">Model Evaluation</span></div>
+      </article>
 
-                <article class="project-card">
-                    <div class="project-banner">
-                        <i class="fas fa-child"></i>
-                    </div>
-                    <div class="project-body">
-                        <h3>Children's Interactive Audio Device</h3>
-                        <p class="project-subtitle">FreeRTOS Embedded Firmware</p>
-                        <p class="project-desc">
-                            Multi-tasking architecture (3 concurrent FreeRTOS tasks) with interrupt-driven
-                            rotary encoder navigation, hierarchical SD card file management, and
-                            interruptible playback with context-aware voice prompts.
-                        </p>
-                        <div class="project-tags">
-                            <span>FreeRTOS</span><span>ESP-IDF</span><span>I2S</span><span>SD Card</span>
-                        </div>
-                        <div class="project-links">
-                            <!-- TODO: replace # with the Children's audio device repo URL -->
-                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
-                        </div>
-                    </div>
-                </article>
+    </div>
+  </div>
+</section>
 
-                <article class="project-card">
-                    <div class="project-banner">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <div class="project-body">
-                        <h3>AI Weed Detection System</h3>
-                        <p class="project-subtitle">Precision Agriculture Vision</p>
-                        <p class="project-desc">
-                            Built and optimized an AI-powered weed detection model for real-time
-                            edge deployment, reducing herbicide usage through targeted application.
-                        </p>
-                        <div class="project-tags">
-                            <span>Computer Vision</span><span>Model Optimization</span><span>Edge AI</span>
-                        </div>
-                        <div class="project-links">
-                            <!-- TODO: replace # with the weed-detection repo URL -->
-                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
-                        </div>
-                    </div>
-                </article>
+<!-- ================= PROJECTS ================= -->
+<section id="projects" aria-labelledby="proj-title">
+  <div class="wrap">
+    <p class="eyebrow reveal">03 // projects</p>
+    <h2 class="section-title reveal" id="proj-title">Things I've <em>built & shipped</em></h2>
 
-                <article class="project-card">
-                    <div class="project-banner">
-                        <i class="fas fa-hand"></i>
-                    </div>
-                    <div class="project-body">
-                        <h3>Gesture & Sign-Language Recognition</h3>
-                        <p class="project-subtitle">MediaPipe Image Processing Pipeline</p>
-                        <p class="project-desc">
-                            Image-processing pipelines for object detection, gesture recognition, and
-                            sign-language translation deployed on edge platforms.
-                        </p>
-                        <div class="project-tags">
-                            <span>MediaPipe</span><span>OpenCV</span><span>Python</span>
-                        </div>
-                        <div class="project-links">
-                            <!-- TODO: replace # with the gesture/sign-language repo URL -->
-                            <a href="#" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
-                        </div>
-                    </div>
-                </article>
+    <div class="filters reveal" role="group" aria-label="Filter projects">
+      <button class="filter-btn active" data-filter="all">all (12)</button>
+      <button class="filter-btn" data-filter="ai">edge ai & vision</button>
+      <button class="filter-btn" data-filter="embedded">embedded & firmware</button>
+      <button class="filter-btn" data-filter="audio">audio systems</button>
+    </div>
 
-            </div>
+    <div class="proj-grid">
 
-            <div class="projects-footer">
-                <a href="https://github.com/MutahharBaig" target="_blank" rel="noopener" class="btn btn-secondary">
-                    <i class="fab fa-github"></i> See more on GitHub
-                </a>
-            </div>
+      <article class="proj featured reveal" data-cat="ai embedded" data-ref="P-01">
+        <span class="feat-pill">FEATURED · FYP</span>
+        <div class="picon" aria-hidden="true">🚜</div>
+        <h3>AI-Powered Agri-Rover</h3>
+        <p>Fully autonomous crop-management rover. Real-time detection of onion, garlic, and potato plants at &gt;90% accuracy under variable lighting; multi-sensor fusion of RGB camera, soil-moisture and NPK probes; GPS navigation with auto, manual, and guided modes; 10 kg payload drivetrain. Winner, Open House 2025.</p>
+        <div class="t-tags"><span class="tag">TensorFlow</span><span class="tag">OpenCV</span><span class="tag">Pixhawk</span><span class="tag">Sensor Fusion</span></div>
+      </article>
+
+      <article class="proj featured reveal" data-cat="ai" data-ref="P-12">
+        <span class="feat-pill">FEATURED</span>
+        <div class="picon" aria-hidden="true">🪞</div>
+        <h3>Coaching Mirror</h3>
+        <p>AI-powered interactive mirror for coaching and feedback, combining on-device vision with NLP-driven conversational guidance — exploring what an ambient AI assistant looks like as a physical product.</p>
+        <div class="t-tags"><span class="tag">AI / NLP</span><span class="tag">Computer Vision</span><span class="tag">HCI</span></div>
+      </article>
+
+      <article class="proj reveal" data-cat="ai audio" data-ref="P-02">
+        <div class="picon" aria-hidden="true">🎙️</div>
+        <h3>Speech-to-Text Pipeline</h3>
+        <p>Production STT pipeline on Hugging Face Spaces using Whisper and Faster-Whisper — 1 hour of audio transcribed in 33 minutes, exposed through a REST API, validated against a benchmark of 8+ commercial STT services.</p>
+        <div class="t-tags"><span class="tag">Whisper</span><span class="tag">Hugging Face</span><span class="tag">REST API</span></div>
+      </article>
+
+      <article class="proj reveal" data-cat="embedded audio" data-ref="P-03">
+        <div class="picon" aria-hidden="true">📡</div>
+        <h3>ESP32-S3 Audio Acquisition System</h3>
+        <p>Audio capture device built on I2S MEMS microphones with SD-card storage and dual wireless transfer — BLE and Wi-Fi Direct — designed for clean handoff to a companion mobile app.</p>
+        <div class="t-tags"><span class="tag">ESP32-S3</span><span class="tag">I2S</span><span class="tag">BLE</span><span class="tag">Wi-Fi Direct</span></div>
+      </article>
+
+      <article class="proj reveal" data-cat="embedded audio" data-ref="P-04">
+        <div class="picon" aria-hidden="true">🧸</div>
+        <h3>Children's Interactive Audio Device</h3>
+        <p>ESP32-S3 firmware with three concurrent FreeRTOS tasks: interrupt-driven rotary-encoder navigation, hierarchical SD-card audio management, interruptible playback with context-aware voice announcements, and hardware-level volume via the I2S peripheral.</p>
+        <div class="t-tags"><span class="tag">FreeRTOS</span><span class="tag">ESP32-S3</span><span class="tag">Firmware</span></div>
+      </article>
+
+      <article class="proj reveal" data-cat="ai" data-ref="P-05">
+        <div class="picon" aria-hidden="true">🌱</div>
+        <h3>AI Weed Detection System</h3>
+        <p>Precision-agriculture vision system that localizes weeds for targeted herbicide application, optimized for real-time inference on edge hardware in actual field conditions. Built at NICAT (NASTP).</p>
+        <div class="t-tags"><span class="tag">Computer Vision</span><span class="tag">Edge AI</span><span class="tag">Model Optimization</span></div>
+      </article>
+
+      <article class="proj reveal" data-cat="ai" data-ref="P-06">
+        <div class="picon" aria-hidden="true">🤟</div>
+        <h3>Gesture & Sign-Language Recognition</h3>
+        <p>Real-time hand-gesture and ASL recognition pipelines using CNNs, MediaPipe, and OpenCV — compressed for deployment on resource-constrained edge devices.</p>
+        <div class="t-tags"><span class="tag">CNN</span><span class="tag">MediaPipe</span><span class="tag">TFLite</span></div>
+        <div class="links"><a href="https://github.com/MutahharBaig/ASL-using-CNN" target="_blank" rel="noopener">↗ GitHub repo</a></div>
+      </article>
+
+      <article class="proj reveal" data-cat="embedded ai audio" data-ref="P-07">
+        <div class="picon" aria-hidden="true">👶</div>
+        <h3>Jack Jack — BLE Baby Monitor</h3>
+        <p>BLE sensor node that detects and classifies infant crying, streaming alerts to a paired device — low-power audio sensing meets on-device classification.</p>
+        <div class="t-tags"><span class="tag">BLE</span><span class="tag">Audio ML</span><span class="tag">Low Power</span></div>
+        <div class="links"><a href="https://drive.google.com/drive/folders/1ofI8dX1dyh4jUrcsQqUzQ0Ba3h2IgeLf" target="_blank" rel="noopener">▶ See project demo</a></div>
+      </article>
+
+      <article class="proj reveal" data-cat="embedded" data-ref="P-08">
+        <div class="picon" aria-hidden="true">🔧</div>
+        <h3>Smart Valve Motor Control</h3>
+        <p>ESP32-S3 motor-control system for a smart valve, with a React Native companion app for remote actuation, state monitoring, and configuration.</p>
+        <div class="t-tags"><span class="tag">ESP32-S3</span><span class="tag">Motor Control</span><span class="tag">React Native</span></div>
+      </article>
+
+      <article class="proj reveal" data-cat="embedded ai" data-ref="P-09">
+        <div class="picon" aria-hidden="true">⌚</div>
+        <h3>Stress-Sensing Wristband</h3>
+        <p>Wearable on ESP32 with a MAX30102 sensor, deriving heart-rate-variability features from PPG to estimate stress levels — biomedical signal processing on a wrist-sized power budget.</p>
+        <div class="t-tags"><span class="tag">MAX30102</span><span class="tag">HRV</span><span class="tag">Biosignals</span></div>
+        <div class="links"><a href="https://drive.google.com/drive/folders/1ofI8dX1dyh4jUrcsQqUzQ0Ba3h2IgeLf" target="_blank" rel="noopener">▶ See project demo</a></div>
+      </article>
+
+      <article class="proj reveal" data-cat="embedded" data-ref="P-10">
+        <div class="picon" aria-hidden="true">🏕️</div>
+        <h3>Campsite Access Control</h3>
+        <p>NFC-based access system powered over Ethernet (PoE) for campsite entry management — card provisioning, reader firmware, and reliable operation outdoors.</p>
+        <div class="t-tags"><span class="tag">NFC</span><span class="tag">PoE</span><span class="tag">Access Control</span></div>
+      </article>
+
+      <article class="proj reveal" data-cat="embedded audio" data-ref="P-11">
+        <div class="picon" aria-hidden="true">🕌</div>
+        <h3>Al-Noor Islamic Audio Device</h3>
+        <p>Educational audio player for kids with Islamic content — embedded C firmware, tactile navigation, and curated audio libraries, built as part of the open Noor educational toy project.</p>
+        <div class="t-tags"><span class="tag">Embedded C</span><span class="tag">Audio</span><span class="tag">EdTech</span></div>
+        <div class="links"><a href="https://github.com/HackHobby-Lab/Noor" target="_blank" rel="noopener">↗ GitHub repo</a><a href="https://drive.google.com/drive/folders/1ofI8dX1dyh4jUrcsQqUzQ0Ba3h2IgeLf" target="_blank" rel="noopener">▶ See project demo</a></div>
+      </article>
+
+      <article class="proj reveal" data-cat="ai" data-ref="P-13">
+        <div class="picon" aria-hidden="true">🫀</div>
+        <h3>ECG Arrhythmia Detection</h3>
+        <p>Automated arrhythmia classification from ECG readings using machine-learning techniques in MATLAB — feature extraction, classifier comparison, and evaluation on standard cardiac datasets.</p>
+        <div class="t-tags"><span class="tag">MATLAB</span><span class="tag">ECG / DSP</span><span class="tag">ML</span></div>
+        <div class="links"><a href="https://github.com/MutahharBaig/An-Automated-System-for-Arrhythmia-Detection-Using-Machine-Learning-Techniques-in-MATLAB-" target="_blank" rel="noopener">↗ GitHub repo</a></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" aria-labelledby="skills-title">
+  <div class="wrap">
+    <p class="eyebrow reveal">04 // skills</p>
+    <h2 class="section-title reveal" id="skills-title">The <em>toolchain</em></h2>
+    <div class="skill-grid">
+      <div class="skill-card reveal">
+        <h3><span class="dot" aria-hidden="true"></span>Programming Languages</h3>
+        <div class="chips"><span>Python</span><span>C / C++</span><span>MATLAB</span><span>Verilog</span><span>SQL</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="dot" aria-hidden="true"></span>AI / Machine Learning</h3>
+        <div class="chips"><span>PyTorch</span><span>TensorFlow</span><span>TensorFlow Lite</span><span>OpenCV</span><span>MediaPipe</span><span>LLMs</span><span>Gen AI</span><span>Prompt Engineering</span><span>NumPy</span><span>Pandas</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="dot" aria-hidden="true"></span>Model Optimization</h3>
+        <div class="chips"><span>Quantization</span><span>Pruning</span><span>ONNX</span><span>RKNN</span><span>Edge Deployment</span><span>Feature Extraction</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="dot" aria-hidden="true"></span>Embedded Platforms</h3>
+        <div class="chips"><span>ESP32 / S3</span><span>STM32</span><span>CH32</span><span>Arduino</span><span>Raspberry Pi Zero / 5</span><span>RK3566 / 3576 / 3588</span><span>FPGA</span><span>Pixhawk</span><span>J-Link</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="dot" aria-hidden="true"></span>Signal Processing</h3>
+        <div class="chips"><span>ECG</span><span>PCG</span><span>Medical Imaging</span><span>DSP</span><span>Image Processing</span><span>I2S Audio</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="dot" aria-hidden="true"></span>Tools & Hardware</h3>
+        <div class="chips"><span>ESP-IDF</span><span>FreeRTOS</span><span>MounRiver Studio</span><span>Arduino IDE</span><span>nRF Connect</span><span>Circuit Design</span><span>Sensor Integration</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION & ACHIEVEMENTS ================= -->
+<section id="education" aria-labelledby="edu-title">
+  <div class="wrap">
+    <p class="eyebrow reveal">05 // education & achievements</p>
+    <h2 class="section-title reveal" id="edu-title">Credentials, <em>verified</em></h2>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <h3>BSc Electronics Engineering</h3>
+        <span class="t-date">UET TAXILA · NOV 2021 — JUN 2025</span>
+        <p>Specialized in simulations, AI/ML/DL, MATLAB signal processing, and embedded platforms. Final-year project: the AI-powered Agri-Rover for crop management — autonomous navigation, multi-sensor fusion, and on-device crop detection, developed in partnership with NICAT.</p>
+      </div>
+      <div class="ach-card reveal">
+        <ul>
+          <li><span class="a-ico" aria-hidden="true">🏆</span><div><b>Winner, Open House 2025</b> — Electronics Engineering Department, UET Taxila</div></li>
+          <li><span class="a-ico" aria-hidden="true">🎖️</span><div><b>All Punjab Expo 2025</b> — final-year project selected for competition</div></li>
+          <li><span class="a-ico" aria-hidden="true">📄</span><div><b>Conference paper submitted</b> — research arising from project work</div></li>
+          <li><span class="a-ico" aria-hidden="true">🔬</span><div><b>IEEE Student Member</b> — Consumer Technology Society & Engineering in Medicine and Biology Society</div></li>
+          <li><span class="a-ico" aria-hidden="true">📖</span><div><b>Hafiz-e-Quran</b> — complete memorization of the Quran</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <p class="eyebrow reveal">06 // contact</p>
+    <h2 class="section-title reveal" id="contact-title">Open a <em>channel</em></h2>
+    <div class="contact-grid">
+      <div class="c-cards reveal">
+        <a class="c-card" href="mailto:mutahharbaig215@gmail.com">
+          <div class="picon" aria-hidden="true">✉️</div>
+          <div><span>Email</span><b>mutahharbaig215@gmail.com</b></div>
+        </a>
+        <a class="c-card" href="tel:+923200974951">
+          <div class="picon" aria-hidden="true">📞</div>
+          <div><span>Phone</span><b>+92 320 0974951</b></div>
+        </a>
+        <a class="c-card" href="https://github.com/MutahharBaig" target="_blank" rel="noopener">
+          <div class="picon" aria-hidden="true">⌨️</div>
+          <div><span>GitHub</span><b>github.com/MutahharBaig</b></div>
+        </a>
+        <a class="c-card" href="https://linkedin.com/in/muhammad-mutahhar-baig-91586a324" target="_blank" rel="noopener">
+          <div class="picon" aria-hidden="true">🔗</div>
+          <div><span>LinkedIn</span><b>muhammad-mutahhar-baig</b></div>
+        </a>
+      </div>
+
+      <form id="contactForm" class="reveal" novalidate aria-label="Contact form">
+        <div class="f-row">
+          <div class="f-group">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required>
+            <span class="f-error" id="err-name" aria-live="polite"></span>
+          </div>
+          <div class="f-group">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required>
+            <span class="f-error" id="err-email" aria-live="polite"></span>
+          </div>
         </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="section skills" id="skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">04 Tech Stack</span>
-                <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
-            </div>
-
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <div class="skill-cat-header">
-                        <i class="fas fa-code"></i>
-                        <h3>Programming Languages</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span>Python</span><span>C / C++</span><span>MATLAB</span><span>Verilog</span><span>SQL</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-cat-header">
-                        <i class="fas fa-brain"></i>
-                        <h3>AI / ML / DL</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span>TensorFlow</span><span>PyTorch</span><span>TF Lite</span><span>OpenCV</span>
-                        <span>MediaPipe</span><span>NumPy</span><span>Pandas</span><span>LLMs</span>
-                        <span>Prompt Eng.</span><span>Gen AI</span><span>ONNX</span><span>RKNN</span>
-                        <span>Quantization</span><span>Pruning</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-cat-header">
-                        <i class="fas fa-microchip"></i>
-                        <h3>Embedded Systems</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span>ESP32 / S3</span><span>Arduino</span><span>Raspberry Pi (0/5)</span>
-                        <span>STM32</span><span>CH32</span><span>FPGA</span><span>Pixhawk</span>
-                        <span>RK3566 / 76 / 88</span><span>J-Link</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-cat-header">
-                        <i class="fas fa-tools"></i>
-                        <h3>Development Tools</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span>ESP-IDF</span><span>MounRiver Studio</span><span>Arduino IDE</span>
-                        <span>MATLAB</span><span>nRF Connect</span><span>Hugging Face</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-cat-header">
-                        <i class="fas fa-wave-square"></i>
-                        <h3>Signal Processing</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span>ECG</span><span>PCG</span><span>Medical Imaging</span>
-                        <span>DSP</span><span>Image Processing</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-cat-header">
-                        <i class="fas fa-bolt"></i>
-                        <h3>Hardware Engineering</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span>MCU Programming</span><span>MPU Programming</span>
-                        <span>Circuit Design</span><span>Sensor Integration</span>
-                        <span>FreeRTOS</span><span>I2S / BLE / Wi-Fi</span>
-                    </div>
-                </div>
-            </div>
+        <div class="f-group">
+          <label for="cf-subject">Subject</label>
+          <input id="cf-subject" name="subject" type="text" required>
+          <span class="f-error" id="err-subject" aria-live="polite"></span>
         </div>
-    </section>
-
-    <!-- Education & Achievements -->
-    <section class="section education" id="education">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">05 Background</span>
-                <h2 class="section-title">Education & <span class="gradient-text">Achievements</span></h2>
-            </div>
-
-            <div class="edu-grid">
-                <div class="edu-card">
-                    <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <div class="edu-content">
-                        <h3>Bachelor's in Electronics Engineering</h3>
-                        <p class="edu-school">University of Engineering & Technology (UET), Taxila</p>
-                        <p class="edu-date">November 2021 June 2025</p>
-                        <p class="edu-desc">
-                            Specialized in AI, ML, DL, and Embedded Systems. Final Year Project on
-                            AI-powered Agri-Rover received industry recognition.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="achievements">
-                    <h3 class="ach-title"><i class="fas fa-trophy"></i> Achievements</h3>
-                    <ul class="ach-list">
-                        <li>
-                            <i class="fas fa-medal"></i>
-                            <div>
-                                <strong>Winner Open House 2025</strong>
-                                <span>Electronics Engineering Department, UET Taxila</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-award"></i>
-                            <div>
-                                <strong>FYP Selected All Punjab Expo 2025</strong>
-                                <span>Agri-Rover for Crop Management</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-book-quran"></i>
-                            <div>
-                                <strong>Hafiz-e-Quran</strong>
-                                <span>Memorized the Holy Quran</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-id-badge"></i>
-                            <div>
-                                <strong>IEEE Student Member</strong>
-                                <span>Consumer Technology Society & EMBS</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-file-lines"></i>
-                            <div>
-                                <strong>Conference Paper Submitted</strong>
-                                <span>Research contribution in AI/embedded systems</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <div class="f-group">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" required></textarea>
+          <span class="f-error" id="err-message" aria-live="polite"></span>
         </div>
-    </section>
+        <button class="btn btn-solid" type="submit" id="sendBtn">Send Message</button>
+        <p class="form-msg" id="formMsg" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
 
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">06 Get In Touch</span>
-                <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
-                <p class="section-sub">
-                    Open to roles in AI/ML, Embedded Systems, and R&D or just to chat about cool tech.
-                </p>
-            </div>
+</main>
 
-            <div class="contact-grid">
-                <a href="mailto:mutahharbaig215@gmail.com" class="contact-card">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <p>mutahharbaig215@gmail.com</p>
-                </a>
-                <a href="tel:+923200974951" class="contact-card">
-                    <i class="fas fa-phone"></i>
-                    <h3>Phone</h3>
-                    <p>+92 320 0974951</p>
-                </a>
-                <a href="https://www.linkedin.com/in/engr-muhammad-mutahhar-baig-91586a324/" target="_blank" rel="noopener" class="contact-card">
-                    <i class="fab fa-linkedin"></i>
-                    <h3>LinkedIn</h3>
-                    <p>Connect with me</p>
-                </a>
-                <a href="https://github.com/MutahharBaig" target="_blank" rel="noopener" class="contact-card">
-                    <i class="fab fa-github"></i>
-                    <h3>GitHub</h3>
-                    <p>@MutahharBaig</p>
-                </a>
-            </div>
+<footer>
+  <div class="wrap">
+    <div class="hero-links">
+      <a class="icon-link" href="https://github.com/MutahharBaig" target="_blank" rel="noopener" aria-label="GitHub profile">
+        <svg viewBox="0 0 24 24"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.2 4.6 18.2 5 18.2 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+      <a class="icon-link" href="https://linkedin.com/in/muhammad-mutahhar-baig-91586a324" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+        <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.2 8h4.6v14.8H.2V8zm7.6 0h4.4v2h.1c.6-1.1 2.1-2.3 4.3-2.3 4.6 0 5.4 3 5.4 6.9v8.2h-4.6v-7.3c0-1.7 0-4-2.4-4s-2.8 1.9-2.8 3.9v7.4H7.8V8z"/></svg>
+      </a>
+      <a class="icon-link" href="mailto:mutahharbaig215@gmail.com" aria-label="Send email">
+        <svg viewBox="0 0 24 24"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm10 8.4L3.5 6v12h17V6L12 12.4zM4.4 6l7.6 5.7L19.6 6H4.4z"/></svg>
+      </a>
+      <a class="icon-link" href="tel:+923200974951" aria-label="Call phone">
+        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+      </a>
+    </div>
+    <p>© <span id="year"></span> Muhammad Mutahhar Baig · designed like a circuit board, because <span class="sig">that's where I live</span></p>
+  </div>
+</footer>
 
-            <form class="contact-form" id="contactForm" novalidate>
-                <h3>Send a quick message</h3>
-                <div class="form-row">
-                    <div class="field">
-                        <label for="cf-name" class="sr-only">Your name</label>
-                        <input id="cf-name" type="text" name="name" placeholder="Your name" required minlength="2" autocomplete="name">
-                    </div>
-                    <div class="field">
-                        <label for="cf-email" class="sr-only">Your email</label>
-                        <input id="cf-email" type="email" name="email" placeholder="Your email" required autocomplete="email">
-                    </div>
-                </div>
-                <div class="field">
-                    <label for="cf-subject" class="sr-only">Subject</label>
-                    <input id="cf-subject" type="text" name="subject" placeholder="Subject" required minlength="2">
-                </div>
-                <div class="field">
-                    <label for="cf-message" class="sr-only">Your message</label>
-                    <textarea id="cf-message" name="message" placeholder="Your message..." rows="5" required minlength="10"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" id="contactSubmit">
-                    <i class="fas fa-paper-plane"></i> <span class="btn-label">Send Message</span>
-                </button>
-                <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
-            </form>
-        </div>
-    </section>
+<script>
+(function(){
+"use strict";
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    </main>
+/* ---------- year ---------- */
+document.getElementById("year").textContent = new Date().getFullYear();
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="logo-bracket">&lt;</span>MMB<span class="logo-bracket">/&gt;</span>
-                    <p>Electronics Engineer · AI/ML · Embedded Systems</p>
-                </div>
-                <div class="footer-socials">
-                    <a href="https://github.com/MutahharBaig" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/engr-muhammad-mutahhar-baig-91586a324/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="mailto:mutahharbaig215@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="year"></span> Muhammad Mutahhar Baig. Built with passion in Islamabad.</p>
-            </div>
-        </div>
-    </footer>
+/* ---------- mobile nav ---------- */
+const toggle = document.getElementById("navToggle");
+const menu = document.getElementById("navMenu");
+toggle.addEventListener("click", () => {
+  const open = menu.classList.toggle("open");
+  toggle.setAttribute("aria-expanded", open);
+  toggle.textContent = open ? "CLOSE" : "MENU";
+});
+menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+  menu.classList.remove("open");
+  toggle.setAttribute("aria-expanded","false");
+  toggle.textContent = "MENU";
+}));
 
-    <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+/* ---------- scroll progress ---------- */
+const trace = document.getElementById("trace-progress");
+function onScroll(){
+  const h = document.documentElement;
+  const pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+  trace.style.width = pct + "%";
+}
+window.addEventListener("scroll", onScroll, {passive:true});
 
-    <script src="script.js"></script>
+/* ---------- active nav link ---------- */
+const sections = [...document.querySelectorAll("section[id]")];
+const navLinks = [...menu.querySelectorAll("a")];
+const navObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id));
+    }
+  });
+}, {rootMargin:"-40% 0px -55% 0px"});
+sections.forEach(s => navObs.observe(s));
+
+/* ---------- reveal on scroll ---------- */
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add("in");
+      revObs.unobserve(e.target);
+      setTimeout(() => { e.target.style.transitionDelay = ""; }, 1000);
+    }
+  });
+}, {threshold:.12});
+/* staggered reveals for grids */
+document.querySelectorAll(".proj-grid .proj, .skill-grid .skill-card").forEach((el, i) => {
+  el.style.transitionDelay = (i % 6) * 70 + "ms";
+});
+/* timeline trace draw */
+const tl = document.querySelector(".timeline");
+if(tl){
+  const tlObs = new IntersectionObserver(es => {
+    es.forEach(e => { if(e.isIntersecting){ tl.classList.add("in"); tlObs.disconnect(); } });
+  }, {threshold:.08});
+  tlObs.observe(tl);
+}
+document.querySelectorAll(".reveal").forEach(el => revObs.observe(el));
+
+/* ---------- typed roles ---------- */
+const roles = [
+  "Electronics Engineer",
+  "Embedded Firmware Developer",
+  "Edge AI Engineer",
+  "Signal Processing — ECG · PCG · Audio",
+  "FreeRTOS · ESP-IDF · RKNN"
+];
+const typedEl = document.getElementById("typed");
+if(reduceMotion){
+  typedEl.textContent = roles[0];
+}else{
+  let ri = 0, ci = 0, deleting = false;
+  (function tick(){
+    const word = roles[ri];
+    typedEl.textContent = word.slice(0, ci);
+    let delay = deleting ? 32 : 72;
+    if(!deleting && ci === word.length){ delay = 1700; deleting = true; }
+    else if(deleting && ci === 0){ deleting = false; ri = (ri+1) % roles.length; delay = 350; }
+    else ci += deleting ? -1 : 1;
+    setTimeout(tick, delay);
+  })();
+}
+
+/* ---------- animated counters ---------- */
+const counters = document.querySelectorAll(".count");
+const cntObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(!e.isIntersecting) return;
+    cntObs.unobserve(e.target);
+    const target = +e.target.dataset.target;
+    if(reduceMotion){ e.target.textContent = target; return; }
+    const t0 = performance.now(), dur = 1400;
+    (function step(t){
+      const p = Math.min((t - t0) / dur, 1);
+      e.target.textContent = Math.round(target * (1 - Math.pow(1-p, 3)));
+      if(p < 1) requestAnimationFrame(step);
+    })(t0);
+  });
+}, {threshold:.5});
+counters.forEach(c => cntObs.observe(c));
+
+/* ---------- oscilloscope hero canvas ---------- */
+const cv = document.getElementById("scope");
+const ctx = cv.getContext("2d");
+let W, H, mx = .5, my = .5;
+function resize(){
+  W = cv.clientWidth; H = cv.clientHeight;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  cv.width = W * dpr; cv.height = H * dpr;
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+}
+resize();
+window.addEventListener("resize", resize);
+window.addEventListener("pointermove", e => { mx = e.clientX / W; my = e.clientY / H; }, {passive:true});
+
+let scopeRGB = {copper:[224,145,90], signal:[91,200,175], silk:[232,237,245]};
+function hexToRgb(h){
+  h = h.trim().replace("#","");
+  if(h.length === 3) h = h.split("").map(c => c + c).join("");
+  return [parseInt(h.slice(0,2),16), parseInt(h.slice(2,4),16), parseInt(h.slice(4,6),16)];
+}
+function refreshScopeColors(){
+  const cs = getComputedStyle(document.documentElement);
+  try{
+    scopeRGB.copper = hexToRgb(cs.getPropertyValue("--copper"));
+    scopeRGB.signal = hexToRgb(cs.getPropertyValue("--signal"));
+    scopeRGB.silk  = hexToRgb(cs.getPropertyValue("--silk"));
+  }catch(_){}
+}
+refreshScopeColors();
+const rgbaOf = (c,a) => "rgba(" + c[0] + "," + c[1] + "," + c[2] + "," + a + ")";
+function waveY(x, baseY, L, t){
+  return baseY + Math.sin(x*L.f + t*L.speed)*L.amp + Math.sin(x*L.f*2.7 + t*L.speed*1.6)*L.amp*.35;
+}
+function drawScope(t){
+  ctx.clearRect(0,0,W,H);
+  const baseY = H * .82;
+  const layers = [
+    {amp: 16 + 26*my, f:.012, speed:.0012, color:rgbaOf(scopeRGB.copper,.55), lw:1.7, glow:true},
+    {amp: 9 + 14*mx,  f:.021, speed:.0019, color:rgbaOf(scopeRGB.signal,.35), lw:1.1},
+    {amp: 4,          f:.045, speed:.0031, color:rgbaOf(scopeRGB.silk,.13),  lw:1}
+  ];
+  layers.forEach(L => {
+    ctx.beginPath();
+    for(let x = 0; x <= W; x += 3){
+      const y = waveY(x, baseY, L, t);
+      x === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+    }
+    ctx.save();
+    if(L.glow){ ctx.shadowColor = rgbaOf(scopeRGB.copper,.8); ctx.shadowBlur = 12; }
+    ctx.strokeStyle = L.color;
+    ctx.lineWidth = L.lw;
+    ctx.stroke();
+    ctx.restore();
+  });
+  // signal packets riding the carrier wave
+  for(let i = 0; i < 3; i++){
+    const px = ((t * (.06 + i * .025)) + i * W / 3) % W;
+    const py = waveY(px, baseY, layers[0], t);
+    ctx.save();
+    ctx.shadowColor = rgbaOf(scopeRGB.copper,.9);
+    ctx.shadowBlur = 10;
+    ctx.fillStyle = rgbaOf(scopeRGB.copper,.95);
+    ctx.beginPath(); ctx.arc(px, py, 2.4, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  }
+  // trigger marker
+  ctx.fillStyle = rgbaOf(scopeRGB.copper,.65);
+  const tx = (t * .05) % W;
+  ctx.fillRect(tx, baseY - 46, 1, 92);
+}
+if(reduceMotion){
+  drawScope(0);
+}else{
+  (function loop(t){ drawScope(t || 0); requestAnimationFrame(loop); })();
+}
+
+/* ---------- theme switcher ---------- */
+const themes = [
+  {id:"copper",  label:"COPPER"},
+  {id:"emerald", label:"EMERALD"},
+  {id:"violet",  label:"VIOLET"},
+  {id:"silk",    label:"SILK·LIGHT"}
+];
+const themeBtn = document.getElementById("themeBtn");
+const themeLabel = document.getElementById("themeLabel");
+let themeIdx = 0;
+try{
+  const saved = localStorage.getItem("mb-theme");
+  const found = themes.findIndex(t => t.id === saved);
+  if(found > -1) themeIdx = found;
+}catch(_){}
+function applyTheme(){
+  const t = themes[themeIdx];
+  if(t.id === "copper") document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme", t.id);
+  themeLabel.textContent = t.label;
+  try{ localStorage.setItem("mb-theme", t.id); }catch(_){}
+  requestAnimationFrame(() => { refreshScopeColors(); if(reduceMotion) drawScope(0); });
+}
+applyTheme();
+themeBtn.addEventListener("click", () => {
+  themeIdx = (themeIdx + 1) % themes.length;
+  applyTheme();
+});
+
+/* ---------- project filters ---------- */
+const filterBtns = document.querySelectorAll(".filter-btn");
+const projects = document.querySelectorAll(".proj");
+filterBtns.forEach(btn => btn.addEventListener("click", () => {
+  filterBtns.forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  const f = btn.dataset.filter;
+  projects.forEach(p => {
+    const show = f === "all" || p.dataset.cat.split(" ").includes(f);
+    p.classList.toggle("hide", !show);
+  });
+}));
+
+/* ---------- card spotlight + 3D tilt ---------- */
+if(window.matchMedia("(pointer:fine)").matches){
+  projects.forEach(card => {
+    card.addEventListener("mousemove", e => {
+      const r = card.getBoundingClientRect();
+      const x = e.clientX - r.left, y = e.clientY - r.top;
+      card.style.setProperty("--mx", x + "px");
+      card.style.setProperty("--my", y + "px");
+      if(reduceMotion) return;
+      if(!card.dataset.tilt){
+        card.dataset.tilt = "1";
+        card.style.transition = "transform .15s ease, border-color .25s ease, box-shadow .25s ease";
+      }
+      const rx = ((y / r.height) - .5) * -5;
+      const ry = ((x / r.width) - .5) * 5;
+      card.style.transform = "perspective(900px) rotateX(" + rx.toFixed(2) + "deg) rotateY(" + ry.toFixed(2) + "deg) translateY(-5px)";
+    });
+    card.addEventListener("mouseleave", () => { card.style.transform = ""; });
+  });
+}
+
+/* ---------- contact form ---------- */
+const form = document.getElementById("contactForm");
+const msg = document.getElementById("formMsg");
+const sendBtn = document.getElementById("sendBtn");
+const fields = ["name","email","subject","message"];
+
+function validateField(id){
+  const el = document.getElementById("cf-" + id);
+  const err = document.getElementById("err-" + id);
+  let m = "";
+  const v = el.value.trim();
+  if(!v) m = "This field is required.";
+  else if(id === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) m = "Enter a valid email address.";
+  else if(id === "message" && v.length < 10) m = "Message should be at least 10 characters.";
+  el.classList.toggle("err", !!m);
+  err.textContent = m;
+  return !m;
+}
+fields.forEach(id => {
+  const el = document.getElementById("cf-" + id);
+  el.addEventListener("blur", () => validateField(id));
+  el.addEventListener("input", () => { if(el.classList.contains("err")) validateField(id); });
+});
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  msg.className = "form-msg";
+  const ok = fields.map(validateField).every(Boolean);
+  if(!ok){
+    msg.className = "form-msg bad";
+    msg.textContent = "// Please fix the highlighted fields and try again.";
+    return;
+  }
+  sendBtn.disabled = true;
+  sendBtn.textContent = "Opening mail client…";
+  const name = document.getElementById("cf-name").value.trim();
+  const email = document.getElementById("cf-email").value.trim();
+  const subject = document.getElementById("cf-subject").value.trim();
+  const body = document.getElementById("cf-message").value.trim()
+    + "\n\n— " + name + " (" + email + ")";
+  window.location.href = "mailto:mutahharbaig215@gmail.com?subject="
+    + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  setTimeout(() => {
+    sendBtn.disabled = false;
+    sendBtn.textContent = "Send Message";
+    msg.className = "form-msg ok";
+    msg.textContent = "// Your email client should now be open with the message prefilled.";
+    form.reset();
+  }, 1200);
+});
+
+})();
+</script>
 </body>
 </html>
