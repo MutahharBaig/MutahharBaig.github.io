@@ -333,8 +333,10 @@ h1 .copper{color:var(--copper)}
 .proj .picon{
   width:44px;height:44px;border-radius:10px;background:color-mix(in srgb, var(--copper) 12%, transparent);
   display:flex;align-items:center;justify-content:center;font-size:1.25rem;
-  border:1px solid var(--copper-dim);
+  border:1px solid var(--copper-dim);color:var(--copper-bright);
 }
+.picon svg{width:22px;height:22px;display:block}
+.btn svg, .proj .links a svg{flex-shrink:0}
 .proj h3{font-family:var(--display);font-size:1.06rem;line-height:1.3}
 .proj p{color:var(--muted);font-size:.88rem;flex:1}
 .proj .t-tags{margin-top:0}
@@ -557,7 +559,7 @@ h2.section-title.in::after{width:140px}
       <p class="hero-sub">Electronics Engineer from UET Taxila. I build firmware and deploy compressed deep-learning models on the kind of hardware most people consider too small for AI — from ESP32-S3 audio devices to Rockchip NPUs.</p>
       <div class="cta-row">
         <a class="btn btn-solid" href="#projects">View My Work</a>
-        <a class="btn btn-ghost" href="assets/resume.pdf" download>↓ Download CV</a>
+        <a class="btn btn-ghost" href="assets/resume.pdf" download><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 21h14"/></svg>Download CV</a>
         <a class="btn btn-ghost" href="#contact">Get In Touch</a>
       </div>
       <div class="hero-links">
@@ -703,7 +705,7 @@ h2.section-title.in::after{width:140px}
 
       <article class="proj featured reveal" data-cat="ai embedded" data-ref="P-01">
         <span class="feat-pill">FEATURED · FYP</span>
-        <div class="picon" aria-hidden="true">🚜</div>
+        <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg></div>
         <h3>AI-Powered Agri-Rover</h3>
         <p>Fully autonomous crop-management rover. Real-time detection of onion, garlic, and potato plants at &gt;90% accuracy under variable lighting; multi-sensor fusion of RGB camera, soil-moisture and NPK probes; GPS navigation with auto, manual, and guided modes; 10 kg payload drivetrain. Winner, Open House 2025.</p>
         <div class="t-tags"><span class="tag">TensorFlow</span><span class="tag">OpenCV</span><span class="tag">Pixhawk</span><span class="tag">Sensor Fusion</span></div>
@@ -711,92 +713,92 @@ h2.section-title.in::after{width:140px}
 
       <article class="proj featured reveal" data-cat="ai" data-ref="P-12">
         <span class="feat-pill">FEATURED</span>
-        <div class="picon" aria-hidden="true">🪞</div>
+        <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg></div>
         <h3>Coaching Mirror</h3>
         <p>AI-powered interactive mirror for coaching and feedback, combining on-device vision with NLP-driven conversational guidance — exploring what an ambient AI assistant looks like as a physical product.</p>
         <div class="t-tags"><span class="tag">AI / NLP</span><span class="tag">Computer Vision</span><span class="tag">HCI</span></div>
       </article>
 
       <article class="proj reveal" data-cat="ai audio" data-ref="P-02">
-        <div class="picon" aria-hidden="true">🎙️</div>
+        <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="6" height="13" x="9" y="2" rx="3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></div>
         <h3>Speech-to-Text Pipeline</h3>
         <p>Production STT pipeline on Hugging Face Spaces using Whisper and Faster-Whisper — 1 hour of audio transcribed in 33 minutes, exposed through a REST API, validated against a benchmark of 8+ commercial STT services.</p>
         <div class="t-tags"><span class="tag">Whisper</span><span class="tag">Hugging Face</span><span class="tag">REST API</span></div>
       </article>
 
       <article class="proj reveal" data-cat="embedded audio" data-ref="P-03">
-        <div class="picon" aria-hidden="true">📡</div>
+        <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14 0M1.42 9a16 16 0 0 1 21.16 0M8.5 16.43a6 6 0 0 1 7 0M12 20h.01"/></svg></div>
         <h3>ESP32-S3 Audio Acquisition System</h3>
         <p>Audio capture device built on I2S MEMS microphones with SD-card storage and dual wireless transfer — BLE and Wi-Fi Direct — designed for clean handoff to a companion mobile app.</p>
         <div class="t-tags"><span class="tag">ESP32-S3</span><span class="tag">I2S</span><span class="tag">BLE</span><span class="tag">Wi-Fi Direct</span></div>
       </article>
 
       <article class="proj reveal" data-cat="embedded audio" data-ref="P-04">
-        <div class="picon" aria-hidden="true">🧸</div>
+        <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
         <h3>Children's Interactive Audio Device</h3>
         <p>ESP32-S3 firmware with three concurrent FreeRTOS tasks: interrupt-driven rotary-encoder navigation, hierarchical SD-card audio management, interruptible playback with context-aware voice announcements, and hardware-level volume via the I2S peripheral.</p>
         <div class="t-tags"><span class="tag">FreeRTOS</span><span class="tag">ESP32-S3</span><span class="tag">Firmware</span></div>
       </article>
 
       <article class="proj reveal" data-cat="ai" data-ref="P-05">
-        <div class="picon" aria-hidden="true">🌱</div>
+        <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.96a1 1 0 0 1 1.8.5c0 5.5 1.3 12.6-7.07 16.65-2.92 1.45-6.43.85-8.93-1.61"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></div>
         <h3>AI Weed Detection System</h3>
         <p>Precision-agriculture vision system that localizes weeds for targeted herbicide application, optimized for real-time inference on edge hardware in actual field conditions. Built at NICAT (NASTP).</p>
         <div class="t-tags"><span class="tag">Computer Vision</span><span class="tag">Edge AI</span><span class="tag">Model Optimization</span></div>
       </article>
 
       <article class="proj reveal" data-cat="ai" data-ref="P-06">
-        <div class="picon" aria-hidden="true">🤟</div>
+        <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
         <h3>Gesture & Sign-Language Recognition</h3>
         <p>Real-time hand-gesture and ASL recognition pipelines using CNNs, MediaPipe, and OpenCV — compressed for deployment on resource-constrained edge devices.</p>
         <div class="t-tags"><span class="tag">CNN</span><span class="tag">MediaPipe</span><span class="tag">TFLite</span></div>
-        <div class="links"><a href="https://github.com/MutahharBaig/ASL-using-CNN" target="_blank" rel="noopener">↗ GitHub repo</a></div>
+        <div class="links"><a href="https://github.com/MutahharBaig/ASL-using-CNN" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>GitHub repo</a></div>
       </article>
 
       <article class="proj reveal" data-cat="embedded ai audio" data-ref="P-07">
-        <div class="picon" aria-hidden="true">👶</div>
+        <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 11h.01M15 11h.01M9.5 15.5c.5.5 1.5 1 2.5 1s2-.5 2.5-1"/></svg></div>
         <h3>Jack Jack — BLE Baby Monitor</h3>
         <p>BLE sensor node that detects and classifies infant crying, streaming alerts to a paired device — low-power audio sensing meets on-device classification.</p>
         <div class="t-tags"><span class="tag">BLE</span><span class="tag">Audio ML</span><span class="tag">Low Power</span></div>
-        <div class="links"><a href="https://drive.google.com/drive/folders/1ofI8dX1dyh4jUrcsQqUzQ0Ba3h2IgeLf" target="_blank" rel="noopener">▶ See project demo</a></div>
+        <div class="links"><a href="https://drive.google.com/drive/folders/1ofI8dX1dyh4jUrcsQqUzQ0Ba3h2IgeLf" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>See project demo</a></div>
       </article>
 
       <article class="proj reveal" data-cat="embedded" data-ref="P-08">
-        <div class="picon" aria-hidden="true">🔧</div>
+        <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
         <h3>Smart Valve Motor Control</h3>
         <p>ESP32-S3 motor-control system for a smart valve, with a React Native companion app for remote actuation, state monitoring, and configuration.</p>
         <div class="t-tags"><span class="tag">ESP32-S3</span><span class="tag">Motor Control</span><span class="tag">React Native</span></div>
       </article>
 
       <article class="proj reveal" data-cat="embedded ai" data-ref="P-09">
-        <div class="picon" aria-hidden="true">⌚</div>
+        <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="6"/><polyline points="12 10 12 12 13.5 13.5"/><path d="m16.13 7.66-.81-4.05a2 2 0 0 0-2-1.61h-2.68a2 2 0 0 0-2 1.61l-.78 4.05M7.88 16.36l.8 4a2 2 0 0 0 2 1.61h2.72a2 2 0 0 0 2-1.61l.81-4.05"/></svg></div>
         <h3>Stress-Sensing Wristband</h3>
         <p>Wearable on ESP32 with a MAX30102 sensor, deriving heart-rate-variability features from PPG to estimate stress levels — biomedical signal processing on a wrist-sized power budget.</p>
         <div class="t-tags"><span class="tag">MAX30102</span><span class="tag">HRV</span><span class="tag">Biosignals</span></div>
-        <div class="links"><a href="https://drive.google.com/drive/folders/1ofI8dX1dyh4jUrcsQqUzQ0Ba3h2IgeLf" target="_blank" rel="noopener">▶ See project demo</a></div>
+        <div class="links"><a href="https://drive.google.com/drive/folders/1ofI8dX1dyh4jUrcsQqUzQ0Ba3h2IgeLf" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>See project demo</a></div>
       </article>
 
       <article class="proj reveal" data-cat="embedded" data-ref="P-10">
-        <div class="picon" aria-hidden="true">🏕️</div>
+        <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 20 10 4M5 20l9-16M3 20h18M12 15l-3 5M12 15l3 5"/></svg></div>
         <h3>Campsite Access Control</h3>
         <p>NFC-based access system powered over Ethernet (PoE) for campsite entry management — card provisioning, reader firmware, and reliable operation outdoors.</p>
         <div class="t-tags"><span class="tag">NFC</span><span class="tag">PoE</span><span class="tag">Access Control</span></div>
       </article>
 
       <article class="proj reveal" data-cat="embedded audio" data-ref="P-11">
-        <div class="picon" aria-hidden="true">🕌</div>
+        <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/><path d="M20 3v4M22 5h-4"/></svg></div>
         <h3>Al-Noor Islamic Audio Device</h3>
         <p>Educational audio player for kids with Islamic content — embedded C firmware, tactile navigation, and curated audio libraries, built as part of the open Noor educational toy project.</p>
         <div class="t-tags"><span class="tag">Embedded C</span><span class="tag">Audio</span><span class="tag">EdTech</span></div>
-        <div class="links"><a href="https://github.com/HackHobby-Lab/Noor" target="_blank" rel="noopener">↗ GitHub repo</a><a href="https://drive.google.com/drive/folders/1ofI8dX1dyh4jUrcsQqUzQ0Ba3h2IgeLf" target="_blank" rel="noopener">▶ See project demo</a></div>
+        <div class="links"><a href="https://github.com/HackHobby-Lab/Noor" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>GitHub repo</a><a href="https://drive.google.com/drive/folders/1ofI8dX1dyh4jUrcsQqUzQ0Ba3h2IgeLf" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>See project demo</a></div>
       </article>
 
       <article class="proj reveal" data-cat="ai" data-ref="P-13">
-        <div class="picon" aria-hidden="true">🫀</div>
+        <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
         <h3>ECG Arrhythmia Detection</h3>
         <p>Automated arrhythmia classification from ECG readings using machine-learning techniques in MATLAB — feature extraction, classifier comparison, and evaluation on standard cardiac datasets.</p>
         <div class="t-tags"><span class="tag">MATLAB</span><span class="tag">ECG / DSP</span><span class="tag">ML</span></div>
-        <div class="links"><a href="https://github.com/MutahharBaig/An-Automated-System-for-Arrhythmia-Detection-Using-Machine-Learning-Techniques-in-MATLAB-" target="_blank" rel="noopener">↗ GitHub repo</a></div>
+        <div class="links"><a href="https://github.com/MutahharBaig/An-Automated-System-for-Arrhythmia-Detection-Using-Machine-Learning-Techniques-in-MATLAB-" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>GitHub repo</a></div>
       </article>
 
     </div>
@@ -869,19 +871,19 @@ h2.section-title.in::after{width:140px}
     <div class="contact-grid">
       <div class="c-cards reveal">
         <a class="c-card" href="mailto:mutahharbaig215@gmail.com">
-          <div class="picon" aria-hidden="true">✉️</div>
+          <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
           <div><span>Email</span><b>mutahharbaig215@gmail.com</b></div>
         </a>
         <a class="c-card" href="tel:+923200974951">
-          <div class="picon" aria-hidden="true">📞</div>
+          <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
           <div><span>Phone</span><b>+92 320 0974951</b></div>
         </a>
         <a class="c-card" href="https://github.com/MutahharBaig" target="_blank" rel="noopener">
-          <div class="picon" aria-hidden="true">⌨️</div>
+          <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.2 4.6 18.2 5 18.2 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></div>
           <div><span>GitHub</span><b>github.com/MutahharBaig</b></div>
         </a>
         <a class="c-card" href="https://linkedin.com/in/muhammad-mutahhar-baig-91586a324" target="_blank" rel="noopener">
-          <div class="picon" aria-hidden="true">🔗</div>
+          <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.2 8h4.6v14.8H.2V8zm7.6 0h4.4v2h.1c.6-1.1 2.1-2.3 4.3-2.3 4.6 0 5.4 3 5.4 6.9v8.2h-4.6v-7.3c0-1.7 0-4-2.4-4s-2.8 1.9-2.8 3.9v7.4H7.8V8z"/></svg></div>
           <div><span>LinkedIn</span><b>muhammad-mutahhar-baig</b></div>
         </a>
       </div>
