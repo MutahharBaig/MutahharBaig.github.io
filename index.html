@@ -25,50 +25,56 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --board:#0B1220;
-  --board-2:#101A2E;
-  --board-3:#15223A;
-  --copper:#E0915A;
-  --copper-bright:#F2B27D;
-  --signal:#5BC8AF;
-  --silk:#E8EDF5;
-  --muted:#8A97AC;
-  --danger:#E06A6A;
-  --btn-text:var(--btn-text);
+  --board:#05070F;
+  --board-2:#0A0F20;
+  --board-3:#111A34;
+  --copper:#4FD1FF;
+  --copper-bright:#8FE8FF;
+  --signal:#B084F5;
+  --silk:#E8ECFA;
+  --muted:#8791AC;
+  --danger:#FF6B81;
+  --btn-text:#04121C;
   --copper-dim:color-mix(in srgb, var(--copper) 18%, transparent);
-  --overlay:rgba(5,9,18,.88);
-  --shadow-card:var(--shadow-card);
-  --shadow-pop:var(--shadow-pop);
-  --shadow-modal:var(--shadow-modal);
+  --overlay:rgba(4,6,14,.88);
+  --shadow-card:0 24px 60px rgba(79,209,255,.10);
+  --shadow-pop:0 18px 40px rgba(79,209,255,.18);
+  --shadow-modal:0 30px 90px rgba(79,209,255,.24);
   --radius:10px;
-  --display:'Chakra Petch',sans-serif;
+  --display:'Space Grotesk',sans-serif;
   --body:'IBM Plex Sans',sans-serif;
   --mono:'IBM Plex Mono',monospace;
   --maxw:1100px;
 }
-/* --- solder-mask themes --- */
-[data-theme="emerald"]{
-  --board:#081711; --board-2:#0D211A; --board-3:#122B21;
-  --copper:#D9B95C; --copper-bright:#EDD489; --signal:#62C9E8;
-  --silk:#EAF2ED; --muted:#8FA39A; --btn-text:#15120A;
-}
+/* --- neural-lab themes --- */
 [data-theme="violet"]{
-  --board:#0D0A1F; --board-2:#141031; --board-3:#1B153F;
-  --copper:#9F7CFF; --copper-bright:#C3A8FF; --signal:#58E0C0;
+  --board:#080714; --board-2:#0E0C24; --board-3:#161233;
+  --copper:#9F7CFF; --copper-bright:#C3A8FF; --signal:#5BC8F2;
   --silk:#ECEAF7; --muted:#9690B5; --btn-text:#120B26;
+  --shadow-card:0 24px 60px rgba(159,124,255,.12);
+  --shadow-pop:0 18px 40px rgba(159,124,255,.18);
+  --shadow-modal:0 30px 90px rgba(159,124,255,.26);
 }
-[data-theme="silk"]{
-  --board:#F2EEE6; --board-2:#FFFFFF; --board-3:#F8F4EC;
-  --copper:#B05A28; --copper-bright:#8F4318; --signal:#0E8F77;
-  --silk:#1F2535; --muted:#5C667B; --danger:#C03A3A; --btn-text:#FFF7EF;
-  --overlay:rgba(31,37,53,.55);
-  --shadow-card:0 24px 60px rgba(31,37,53,.14);
-  --shadow-pop:0 18px 40px rgba(31,37,53,.16);
-  --shadow-modal:0 30px 90px rgba(31,37,53,.3);
+[data-theme="magenta"]{
+  --board:#12060F; --board-2:#1C0A19; --board-3:#280F24;
+  --copper:#F25CB0; --copper-bright:#FF8FD1; --signal:#5CE0D8;
+  --silk:#F7EAF2; --muted:#B090A8; --btn-text:#25060F;
+  --shadow-card:0 24px 60px rgba(242,92,176,.12);
+  --shadow-pop:0 18px 40px rgba(242,92,176,.18);
+  --shadow-modal:0 30px 90px rgba(242,92,176,.26);
+}
+[data-theme="mono"]{
+  --board:#F3F4F8; --board-2:#FFFFFF; --board-3:#EDEFF6;
+  --copper:#4A5FD9; --copper-bright:#333FBF; --signal:#0E8F77;
+  --silk:#1B2033; --muted:#5C6479; --danger:#C0374C; --btn-text:#FFFFFF;
+  --overlay:rgba(27,32,51,.55);
+  --shadow-card:0 24px 60px rgba(27,32,51,.10);
+  --shadow-pop:0 18px 40px rgba(27,32,51,.14);
+  --shadow-modal:0 30px 90px rgba(27,32,51,.22);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -168,8 +174,18 @@ h2.section-title{
 h2.section-title em{font-style:normal;color:var(--copper)}
 
 /* reveal on scroll */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
+.reveal{opacity:0;transform:translateY(26px) scale(.98);filter:blur(5px);transition:opacity .7s ease,transform .7s ease,filter .7s ease}
+.reveal.in{opacity:1;transform:none;filter:blur(0)}
+
+/* ambient neural-lab glow */
+.lab-glow{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.32;will-change:transform}
+.lab-glow-a{width:520px;height:520px;top:-140px;left:-120px;background:radial-gradient(circle, var(--copper), transparent 70%);animation:driftA 24s ease-in-out infinite alternate}
+.lab-glow-b{width:460px;height:460px;bottom:-160px;right:-100px;background:radial-gradient(circle, var(--signal), transparent 70%);animation:driftB 28s ease-in-out infinite alternate}
+.lab-glow-c{width:380px;height:380px;top:38%;left:46%;background:radial-gradient(circle, var(--copper-bright), transparent 72%);opacity:.14;animation:driftC 32s ease-in-out infinite alternate}
+@keyframes driftA{from{transform:translate(0,0)}to{transform:translate(70px,50px)}}
+@keyframes driftB{from{transform:translate(0,0)}to{transform:translate(-60px,-40px)}}
+@keyframes driftC{from{transform:translate(0,0) scale(1)}to{transform:translate(-40px,30px) scale(1.15)}}
+@media(prefers-reduced-motion:reduce){.lab-glow{animation:none!important}}
 
 /* ---------- hero ---------- */
 #hero{
@@ -188,7 +204,7 @@ h1{
   font-size:clamp(2.4rem,6.4vw,4.2rem);line-height:1.06;letter-spacing:.005em;
   margin-bottom:1rem;
 }
-h1 .copper{color:var(--copper)}
+h1 .copper{color:var(--copper);text-shadow:0 0 26px color-mix(in srgb, var(--copper) 55%, transparent)}
 .typeline{
   font-family:var(--mono);font-size:clamp(1rem,2.4vw,1.25rem);
   color:var(--silk);min-height:2em;margin-bottom:1.2rem;
@@ -284,6 +300,14 @@ h1 .copper{color:var(--copper)}
   background:linear-gradient(var(--copper) 60%,var(--copper-dim));
   box-shadow:0 0 10px color-mix(in srgb, var(--copper) 35%, transparent);
 }
+.timeline::after{
+  content:"";position:absolute;left:-3px;top:0;width:7px;height:7px;border-radius:50%;
+  background:var(--signal);box-shadow:0 0 12px color-mix(in srgb, var(--signal) 85%, transparent);
+  opacity:0;
+}
+.timeline.in::after{animation:timelinepulse 3.4s ease-in-out .6s infinite}
+@keyframes timelinepulse{0%{top:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}
+@media(prefers-reduced-motion:reduce){.timeline.in::after{animation:none;opacity:0}}
 .t-item{position:relative;padding:0 0 2.6rem 2.4rem}
 .t-item:last-child{padding-bottom:.5rem}
 .t-item::before{ /* via pad */
@@ -356,15 +380,6 @@ h1 .copper{color:var(--copper)}
 }
 .proj .links a:hover{color:var(--copper-bright)}
 .proj.hide{display:none}
-
-/* projects section CTA */
-.demo-cta{text-align:center;margin-top:2.6rem}
-.demo-cta p{
-  font-family:var(--mono);font-size:.74rem;color:var(--muted);
-  margin-top:.95rem;letter-spacing:.04em;
-}
-.btn-large{padding:1.05rem 1.9rem;font-size:.93rem;gap:.7rem}
-.btn-large:hover{box-shadow:0 10px 32px color-mix(in srgb, var(--copper) 40%, transparent)}
 
 /* ---------- skills ---------- */
 .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
@@ -511,6 +526,68 @@ h2.section-title.in::after{width:140px}
   box-shadow:0 0 8px color-mix(in srgb, var(--copper) 60%, transparent);
 }
 
+/* ---------- custom cursor: probe reticle ---------- */
+body.has-custom-cursor,
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor input,
+body.has-custom-cursor textarea,
+body.has-custom-cursor .proj,
+body.has-custom-cursor label{cursor:none}
+
+.probe{
+  position:fixed;top:0;left:0;pointer-events:none;z-index:300;
+  width:26px;height:26px;opacity:0;transition:opacity .25s ease;
+}
+.probe.on{opacity:1}
+.probe .corner{
+  position:absolute;width:9px;height:9px;
+  border-color:var(--copper-bright);transition:border-color .2s ease;
+}
+.probe .corner.tl{top:0;left:0;border-top:1.6px solid;border-left:1.6px solid;border-top-left-radius:2px}
+.probe .corner.tr{top:0;right:0;border-top:1.6px solid;border-right:1.6px solid;border-top-right-radius:2px}
+.probe .corner.bl{bottom:0;left:0;border-bottom:1.6px solid;border-left:1.6px solid;border-bottom-left-radius:2px}
+.probe .corner.br{bottom:0;right:0;border-bottom:1.6px solid;border-right:1.6px solid;border-bottom-right-radius:2px}
+.probe.locked .corner{border-color:var(--signal)}
+.probe.press .corner{border-color:var(--copper-bright)}
+
+.probe-dot{
+  position:fixed;top:0;left:0;width:3px;height:3px;border-radius:50%;
+  background:var(--copper-bright);pointer-events:none;z-index:301;
+  transform:translate(-50%,-50%);opacity:0;transition:opacity .2s ease,background .2s ease;
+  box-shadow:0 0 8px color-mix(in srgb, var(--copper) 80%, transparent);
+}
+.probe-dot.on{opacity:1}
+.probe-dot.locked{opacity:0}
+
+.probe-readout{
+  position:fixed;top:0;left:0;z-index:300;pointer-events:none;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;color:var(--copper);
+  opacity:0;transition:opacity .2s ease;white-space:nowrap;
+}
+.probe-readout.on{opacity:.8}
+
+.probe-label{
+  position:fixed;top:0;left:0;z-index:301;pointer-events:none;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--board);
+  background:var(--signal);padding:.2rem .5rem;border-radius:5px;
+  opacity:0;transition:opacity .2s ease;white-space:nowrap;font-weight:600;
+}
+.probe-label.on{opacity:1}
+
+.probe-spark{
+  position:fixed;top:0;left:0;width:4px;height:4px;pointer-events:none;z-index:302;
+  background:var(--copper-bright);border-radius:1px;
+  box-shadow:0 0 6px color-mix(in srgb, var(--copper) 75%, transparent);
+  animation:sparkfly .5s ease-out forwards;
+}
+@keyframes sparkfly{
+  to{transform:translate(var(--sx),var(--sy)) scale(0);opacity:0}
+}
+@media(pointer:coarse){
+  .probe,.probe-dot,.probe-readout,.probe-label{display:none!important}
+}
+
 /* ---------- responsive ---------- */
 @media(max-width:960px){
   .proj-grid,.skill-grid{grid-template-columns:repeat(2,1fr)}
@@ -544,6 +621,9 @@ h2.section-title.in::after{width:140px}
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
+<div class="lab-glow lab-glow-a" aria-hidden="true"></div>
+<div class="lab-glow lab-glow-b" aria-hidden="true"></div>
+<div class="lab-glow lab-glow-c" aria-hidden="true"></div>
 <div id="trace-progress" aria-hidden="true"></div>
 
 <header class="nav">
@@ -558,7 +638,7 @@ h2.section-title.in::after{width:140px}
       <a href="#contact">contact</a>
     </nav>
     <div class="nav-actions">
-      <button class="theme-btn" id="themeBtn" aria-label="Switch color theme"><span class="sw" aria-hidden="true"></span><span id="themeLabel">COPPER</span></button>
+      <button class="theme-btn" id="themeBtn" aria-label="Switch color theme"><span class="sw" aria-hidden="true"></span><span id="themeLabel">CYAN</span></button>
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">MENU</button>
     </div>
   </div>
@@ -784,7 +864,7 @@ h2.section-title.in::after{width:140px}
       <article class="proj reveal" data-cat="embedded ai audio" data-ref="P-07">
         <div class="picon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 11h.01M15 11h.01M9.5 15.5c.5.5 1.5 1 2.5 1s2-.5 2.5-1"/></svg></div>
         <h3>Jack Jack - BLE Baby Monitor</h3>
-        <p>BLE sensor node that detects and classifies infant crying, streaming alerts to a paired device - low-power audio sensing meets on-device classification.</p>
+        <p>BLE sensor node that fires real-time alerts when sustained loud sound - like crying - is detected, using a debounced threshold state machine and streaming alerts to a paired device over BLE.</p>
         <div class="t-tags"><span class="tag">BLE</span><span class="tag">Audio ML</span><span class="tag">Low Power</span></div>
       </article>
 
@@ -825,15 +905,6 @@ h2.section-title.in::after{width:140px}
         <div class="links"><a href="https://github.com/MutahharBaig/An-Automated-System-for-Arrhythmia-Detection-Using-Machine-Learning-Techniques-in-MATLAB-" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>GitHub repo</a></div>
       </article>
 
-    </div>
-
-    <div class="demo-cta reveal">
-      <a class="btn btn-solid btn-large" href="https://drive.google.com/drive/folders/1ofI8dX1dyh4jUrcsQqUzQ0Ba3h2IgeLf" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-        Watch all project demos
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-      </a>
-      <p>All demo videos are on Google Drive - one folder, every project.</p>
     </div>
   </div>
 </section>
@@ -1105,9 +1176,16 @@ function resize(){
 }
 resize();
 window.addEventListener("resize", resize);
-window.addEventListener("pointermove", e => { mx = e.clientX / W; my = e.clientY / H; }, {passive:true});
+let pointerPx = {x:-9999, y:-9999};
+window.addEventListener("pointermove", e => {
+  mx = e.clientX / W; my = e.clientY / H;
+  const rect = cv.getBoundingClientRect();
+  pointerPx.x = e.clientX - rect.left;
+  pointerPx.y = e.clientY - rect.top;
+}, {passive:true});
+window.addEventListener("pointerleave", () => { pointerPx.x = -9999; pointerPx.y = -9999; });
 
-let scopeRGB = {copper:[224,145,90], signal:[91,200,175], silk:[232,237,245]};
+let scopeRGB = {copper:[79,209,255], signal:[176,132,245], silk:[232,237,245]};
 function hexToRgb(h){
   h = h.trim().replace("#","");
   if(h.length === 3) h = h.split("").map(c => c + c).join("");
@@ -1123,58 +1201,102 @@ function refreshScopeColors(){
 }
 refreshScopeColors();
 const rgbaOf = (c,a) => "rgba(" + c[0] + "," + c[1] + "," + c[2] + "," + a + ")";
-function waveY(x, baseY, L, t){
-  return baseY + Math.sin(x*L.f + t*L.speed)*L.amp + Math.sin(x*L.f*2.7 + t*L.speed*1.6)*L.amp*.35;
+
+/* ---------- neural network hero field ---------- */
+const MAX_DIST = 130;
+let nodes = [], pulses = [];
+function regenerateNodes(){
+  const density = 9000;
+  const count = Math.max(22, Math.min(70, Math.floor((W * H) / density)));
+  nodes = [];
+  for(let i = 0; i < count; i++){
+    nodes.push({
+      x: Math.random() * W, y: Math.random() * H,
+      vx: (Math.random() - .5) * .18, vy: (Math.random() - .5) * .18,
+      r: 1.2 + Math.random() * 1.6
+    });
+  }
+  pulses = [];
 }
-function drawScope(t){
-  ctx.clearRect(0,0,W,H);
-  const baseY = H * .82;
-  const layers = [
-    {amp: 16 + 26*my, f:.012, speed:.0012, color:rgbaOf(scopeRGB.copper,.55), lw:1.7, glow:true},
-    {amp: 9 + 14*mx,  f:.021, speed:.0019, color:rgbaOf(scopeRGB.signal,.35), lw:1.1},
-    {amp: 4,          f:.045, speed:.0031, color:rgbaOf(scopeRGB.silk,.13),  lw:1}
-  ];
-  layers.forEach(L => {
-    ctx.beginPath();
-    for(let x = 0; x <= W; x += 3){
-      const y = waveY(x, baseY, L, t);
-      x === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+regenerateNodes();
+window.addEventListener("resize", regenerateNodes);
+
+function stepNodes(){
+  nodes.forEach(n => {
+    const dx = n.x - pointerPx.x, dy = n.y - pointerPx.y;
+    const d2 = dx * dx + dy * dy;
+    if(d2 < 140 * 140){
+      const d = Math.sqrt(d2) || 1;
+      const f = (140 - d) / 140 * .6;
+      n.vx += (dx / d) * f * .04;
+      n.vy += (dy / d) * f * .04;
     }
+    n.x += n.vx; n.y += n.vy;
+    n.vx *= .985; n.vy *= .985;
+    if(n.x < 0 || n.x > W) n.vx *= -1;
+    if(n.y < 0 || n.y > H) n.vy *= -1;
+    n.x = Math.max(0, Math.min(W, n.x));
+    n.y = Math.max(0, Math.min(H, n.y));
+  });
+}
+function maybeSpawnPulse(){
+  if(pulses.length > 5 || Math.random() > .02 || !nodes.length) return;
+  const a = nodes[Math.floor(Math.random() * nodes.length)];
+  let best = null, bestD = MAX_DIST;
+  nodes.forEach(b => {
+    if(b === a) return;
+    const d = Math.hypot(a.x - b.x, a.y - b.y);
+    if(d < bestD){ bestD = d; best = b; }
+  });
+  if(best) pulses.push({a, b: best, t: 0, speed: .012 + Math.random() * .012});
+}
+function drawNetwork(){
+  ctx.clearRect(0, 0, W, H);
+  for(let i = 0; i < nodes.length; i++){
+    for(let j = i + 1; j < nodes.length; j++){
+      const a = nodes[i], b = nodes[j];
+      const d = Math.hypot(a.x - b.x, a.y - b.y);
+      if(d < MAX_DIST){
+        ctx.strokeStyle = rgbaOf(scopeRGB.copper, (1 - d / MAX_DIST) * .32);
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      }
+    }
+  }
+  nodes.forEach(n => {
     ctx.save();
-    if(L.glow){ ctx.shadowColor = rgbaOf(scopeRGB.copper,.8); ctx.shadowBlur = 12; }
-    ctx.strokeStyle = L.color;
-    ctx.lineWidth = L.lw;
-    ctx.stroke();
+    ctx.shadowColor = rgbaOf(scopeRGB.copper, .7);
+    ctx.shadowBlur = 6;
+    ctx.fillStyle = rgbaOf(scopeRGB.silk, .55);
+    ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
     ctx.restore();
   });
-  // signal packets riding the carrier wave
-  for(let i = 0; i < 3; i++){
-    const px = ((t * (.06 + i * .025)) + i * W / 3) % W;
-    const py = waveY(px, baseY, layers[0], t);
+  pulses.forEach(p => {
+    const x = p.a.x + (p.b.x - p.a.x) * p.t;
+    const y = p.a.y + (p.b.y - p.a.y) * p.t;
     ctx.save();
-    ctx.shadowColor = rgbaOf(scopeRGB.copper,.9);
+    ctx.shadowColor = rgbaOf(scopeRGB.signal, .9);
     ctx.shadowBlur = 10;
-    ctx.fillStyle = rgbaOf(scopeRGB.copper,.95);
-    ctx.beginPath(); ctx.arc(px, py, 2.4, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = rgbaOf(scopeRGB.signal, .95);
+    ctx.beginPath(); ctx.arc(x, y, 2.6, 0, Math.PI * 2); ctx.fill();
     ctx.restore();
-  }
-  // trigger marker
-  ctx.fillStyle = rgbaOf(scopeRGB.copper,.65);
-  const tx = (t * .05) % W;
-  ctx.fillRect(tx, baseY - 46, 1, 92);
+  });
+  pulses.forEach(p => p.t += p.speed);
+  pulses = pulses.filter(p => p.t < 1);
 }
 if(reduceMotion){
-  drawScope(0);
+  drawNetwork();
 }else{
-  (function loop(t){ drawScope(t || 0); requestAnimationFrame(loop); })();
+  (function loop(){ stepNodes(); maybeSpawnPulse(); drawNetwork(); requestAnimationFrame(loop); })();
 }
+
 
 /* ---------- theme switcher ---------- */
 const themes = [
-  {id:"copper",  label:"COPPER"},
-  {id:"emerald", label:"EMERALD"},
+  {id:"cyan",    label:"CYAN"},
   {id:"violet",  label:"VIOLET"},
-  {id:"silk",    label:"SILK·LIGHT"}
+  {id:"magenta", label:"MAGENTA"},
+  {id:"mono",    label:"LAB·LIGHT"}
 ];
 const themeBtn = document.getElementById("themeBtn");
 const themeLabel = document.getElementById("themeLabel");
@@ -1186,11 +1308,11 @@ try{
 }catch(_){}
 function applyTheme(){
   const t = themes[themeIdx];
-  if(t.id === "copper") document.documentElement.removeAttribute("data-theme");
+  if(t.id === "cyan") document.documentElement.removeAttribute("data-theme");
   else document.documentElement.setAttribute("data-theme", t.id);
   themeLabel.textContent = t.label;
   try{ localStorage.setItem("mb-theme", t.id); }catch(_){}
-  requestAnimationFrame(() => { refreshScopeColors(); if(reduceMotion) drawScope(0); });
+  requestAnimationFrame(() => { refreshScopeColors(); if(reduceMotion) drawNetwork(); });
 }
 applyTheme();
 themeBtn.addEventListener("click", () => {
@@ -1282,6 +1404,129 @@ form.addEventListener("submit", e => {
     form.reset();
   }, 1200);
 });
+
+/* ---------- custom cursor: probe reticle ---------- */
+const finePointer = window.matchMedia("(pointer:fine)").matches;
+if(finePointer && !reduceMotion){
+  document.body.classList.add("has-custom-cursor");
+
+  const probe = document.createElement("div"); probe.className = "probe";
+  probe.innerHTML = '<span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>';
+  const pdot = document.createElement("div"); pdot.className = "probe-dot";
+  const readout = document.createElement("div"); readout.className = "probe-readout";
+  const label = document.createElement("div"); label.className = "probe-label";
+  document.body.append(probe, pdot, readout, label);
+
+  let mx = innerWidth / 2, my = innerHeight / 2;
+  let tx = mx, ty = my, tw = 26, th = 26;   // target box (probe locks onto this)
+  let cx = mx, cy = my, cw = 26, ch = 26;   // current animated box
+  let locked = false, labelText = null;
+
+  const DEFAULT_SIZE = 22;
+
+  function setTarget(el){
+    if(el){
+      const r = el.getBoundingClientRect();
+      const pad = 6;
+      tx = r.left - pad; ty = r.top - pad;
+      tw = r.width + pad * 2; th = r.height + pad * 2;
+      locked = true;
+    } else {
+      tw = DEFAULT_SIZE; th = DEFAULT_SIZE;
+      tx = mx - tw / 2; ty = my - th / 2;
+      locked = false;
+    }
+  }
+  setTarget(null);
+
+  window.addEventListener("pointermove", e => {
+    mx = e.clientX; my = e.clientY;
+    if(!locked){ tx = mx - tw / 2; ty = my - th / 2; }
+    probe.classList.add("on"); pdot.classList.add("on"); readout.classList.add("on");
+  }, {passive:true});
+
+  document.addEventListener("mouseleave", () => {
+    probe.classList.remove("on"); pdot.classList.remove("on"); readout.classList.remove("on"); label.classList.remove("on");
+  });
+  document.addEventListener("mouseenter", () => {
+    probe.classList.add("on"); pdot.classList.add("on"); readout.classList.add("on");
+  });
+
+  window.addEventListener("pointerdown", e => {
+    probe.classList.add("press");
+    spawnSparks(e.clientX, e.clientY);
+  });
+  window.addEventListener("pointerup", () => probe.classList.remove("press"));
+
+  function spawnSparks(x, y){
+    const n = 7;
+    for(let i = 0; i < n; i++){
+      const s = document.createElement("div");
+      s.className = "probe-spark";
+      const angle = (Math.PI * 2 * i) / n + Math.random() * .4;
+      const dist = 18 + Math.random() * 16;
+      s.style.setProperty("--sx", (Math.cos(angle) * dist).toFixed(1) + "px");
+      s.style.setProperty("--sy", (Math.sin(angle) * dist).toFixed(1) + "px");
+      s.style.left = x + "px"; s.style.top = y + "px";
+      document.body.appendChild(s);
+      s.addEventListener("animationend", () => s.remove());
+    }
+  }
+
+  (function raf(){
+    cx += (tx - cx) * .22; cy += (ty - cy) * .22;
+    cw += (tw - cw) * .22; ch += (th - ch) * .22;
+    probe.style.transform = "translate(" + cx.toFixed(1) + "px," + cy.toFixed(1) + "px)";
+    probe.style.width = cw.toFixed(1) + "px";
+    probe.style.height = ch.toFixed(1) + "px";
+    probe.classList.toggle("locked", locked);
+    pdot.style.transform = "translate(" + mx + "px," + my + "px) translate(-50%,-50%)";
+    pdot.classList.toggle("locked", locked);
+    if(!locked){
+      readout.style.transform = "translate(" + (mx + 16) + "px," + (my + 18) + "px)";
+      readout.textContent = "X:" + Math.round(mx) + " Y:" + Math.round(my);
+      readout.classList.add("on");
+    } else {
+      readout.classList.remove("on");
+    }
+    label.style.transform = "translate(" + (cx + cw / 2) + "px," + (cy + ch + 10) + "px) translate(-50%,0)";
+    requestAnimationFrame(raf);
+  })();
+
+  function setLabel(text){
+    labelText = text;
+    if(text){ label.textContent = text; label.classList.add("on"); }
+    else label.classList.remove("on");
+  }
+
+  document.querySelectorAll("a, button, input, textarea").forEach(el => {
+    el.addEventListener("mouseenter", () => setTarget(el));
+    el.addEventListener("mouseleave", () => { setTarget(null); setLabel(null); });
+  });
+
+  document.querySelectorAll(".proj").forEach(card => {
+    card.addEventListener("mouseenter", () => {
+      setTarget(card);
+      setLabel(card.querySelector(".links a") ? "VIEW REPO" : "DETAILS");
+    });
+    card.addEventListener("mouseleave", () => { setTarget(null); setLabel(null); });
+  });
+
+  document.querySelectorAll(".proj .links a").forEach(a => {
+    a.addEventListener("mouseenter", () => setLabel("OPEN ↗"));
+  });
+
+  /* ---------- magnetic buttons ---------- */
+  document.querySelectorAll(".btn, .icon-link, .theme-btn").forEach(el => {
+    el.addEventListener("mousemove", e => {
+      const r = el.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width / 2;
+      const y = e.clientY - r.top - r.height / 2;
+      el.style.transform = "translate(" + (x * .22).toFixed(1) + "px," + (y * .3).toFixed(1) + "px)";
+    });
+    el.addEventListener("mouseleave", () => { el.style.transform = ""; });
+  });
+}
 
 })();
 </script>
