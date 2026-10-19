@@ -1,4 +1,4 @@
-# Muhammad Mutahhar Baig — Animated Portfolio
+# Muhammad Mutahhar Baig
 
 Open index.html in your browser. No build step is required.
 
